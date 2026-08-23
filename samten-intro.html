@@ -1,0 +1,328 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samten · Intro (preview)</title>
+<meta name="theme-color" content="#1c0d23">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#241130; --night2:#30183e; --night3:#3f2050;
+  --brass:#d2a566; --brass-soft:#eed4a6; --brass-glow:rgba(226,186,124,.55);
+  --cream:#f5ebe6; --muted:#b49dc0; --line:rgba(245,235,230,.11);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{overscroll-behavior-y:none;overflow-x:hidden}
+body{overflow-x:clip}
+*{scrollbar-width:none}
+*::-webkit-scrollbar{display:none;width:0;height:0}
+body{
+  background:#170b1d;color:var(--cream);
+  font-family:"Roboto",system-ui,sans-serif;font-weight:300;font-size:15px;line-height:1.6;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+.app{
+  max-width:440px;margin:0 auto;min-height:100dvh;position:relative;
+  background:radial-gradient(120% 46% at 50% -6%, #5c2464 0%, transparent 60%), var(--night);
+  box-shadow:0 0 90px rgba(0,0,0,.75);
+  padding-bottom:calc(96px + var(--safe-b));
+}
+
+/* ===== nhãn preview, sẽ bỏ khi ghép vào app ===== */
+.pv{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:7px;background:rgba(210,165,102,.14);border-bottom:1px solid rgba(210,165,102,.3);
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-soft);
+  backdrop-filter:blur(8px);
+}
+
+/* ================= HERO ================= */
+.hero{position:relative;height:78vh;min-height:460px;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2}
+.hero .bg img{filter:brightness(.42) saturate(1.1)}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to bottom, rgba(23,11,29,.5) 0%, rgba(23,11,29,.1) 34%, rgba(36,17,48,.86) 84%, #241130 100%);
+}
+.hero-in{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:flex-end;text-align:center;padding:0 30px 46px;
+}
+.mark{
+  font-family:"Roboto",sans-serif;font-weight:500;font-size:30px;
+  letter-spacing:.42em;padding-left:.42em;color:var(--cream);
+  text-shadow:0 2px 30px rgba(0,0,0,.7);
+}
+.mark b{color:var(--brass);font-weight:500}
+.mark-sub{
+  margin-top:12px;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--brass-soft);
+}
+.mark-line{width:34px;height:1px;background:var(--brass);margin:22px auto 0;opacity:.7}
+.hero-say{margin-top:20px;font-size:13px;color:var(--muted);max-width:26ch}
+.cue{
+  position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+  font-size:17px;color:var(--brass);animation:bob 2.6s ease-in-out infinite;
+}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0);opacity:.5}50%{transform:translateX(-50%) translateY(5px);opacity:1}}
+
+/* ================= câu tầm nhìn ================= */
+.vision{padding:44px 30px 40px;text-align:center}
+.eyebrow{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
+.vision p{
+  margin-top:16px;font-family:"Roboto",sans-serif;font-style:italic;font-weight:300;
+  font-size:25px;line-height:1.34;color:var(--cream);
+}
+.vision p em{font-style:italic;color:var(--brass-soft)}
+
+/* ================= năm danh mục ================= */
+.sec-h{padding:0 22px 14px;display:flex;align-items:baseline;gap:10px}
+.sec-h h2{font-family:"Roboto",sans-serif;font-weight:500;font-size:19px}
+.sec-h span{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px}
+.cat{
+  position:relative;border-radius:17px;overflow:hidden;aspect-ratio:1/1.04;
+  border:1px solid var(--line);isolation:isolate;
+}
+.cat:first-child{grid-column:1/-1;aspect-ratio:2.15/1}
+.cat img{position:absolute;inset:0;z-index:-2;filter:brightness(.52) saturate(1.05)}
+.cat::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top, rgba(23,11,29,.9) 6%, rgba(23,11,29,.15) 62%);
+}
+.cat .t{position:absolute;left:14px;right:12px;bottom:12px}
+.cat .en{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--brass)}
+.cat .vi{font-family:"Roboto",sans-serif;font-weight:500;font-size:16.5px;margin-top:2px;line-height:1.15}
+.cat .dot{position:absolute;top:12px;left:14px;width:7px;height:7px;border-radius:50%}
+
+/* ================= âm thanh sống ================= */
+.live{margin:44px 16px 0;padding:30px 24px 28px;border-radius:22px;position:relative;overflow:hidden;
+  background:var(--night2);border:1px solid var(--line);text-align:center}
+.orb{
+  width:130px;height:130px;margin:2px auto 20px;border-radius:50%;position:relative;
+  background:
+    radial-gradient(circle closest-side, #fffdf7 0%, rgba(255,249,235,.92) 5%, rgba(255,240,212,0) 16%),
+    radial-gradient(circle closest-side, rgba(255,230,187,.72) 0%, rgba(234,184,118,.30) 21%, rgba(210,165,102,0) 46%);
+  animation:breathe 6s ease-in-out infinite;
+}
+.orb i{
+  position:absolute;inset:-26%;border-radius:50%;border:1px solid rgba(238,212,166,.16);
+  animation:ripple 4.4s ease-out infinite;
+}
+.orb i:nth-child(2){animation-delay:1.5s}
+.orb i:nth-child(3){animation-delay:3s}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes ripple{0%{transform:scale(.5);opacity:0}22%{opacity:.85}100%{transform:scale(1.35);opacity:0}}
+.live h3{font-family:"Roboto",sans-serif;font-weight:500;font-size:21px;line-height:1.25}
+.live h3 em{font-style:italic;color:var(--brass-soft)}
+.live p{margin-top:11px;font-size:12.5px;color:var(--muted);max-width:30ch;margin-inline:auto}
+.stamp{
+  display:inline-block;margin-top:18px;padding:7px 15px;border-radius:99px;
+  border:1px solid rgba(210,165,102,.32);background:rgba(210,165,102,.07);
+  font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-soft);
+}
+
+/* ================= căn phòng thật ================= */
+.room{margin-top:46px}
+.room-img{height:250px;overflow:hidden;position:relative;isolation:isolate}
+.room-img img{filter:brightness(.5) saturate(1.05)}
+.room-img::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, #241130 2%, rgba(36,17,48,.25) 60%)}
+.room-t{padding:0 26px;margin-top:-52px;position:relative;text-align:center}
+.room-t h3{font-family:"Roboto",sans-serif;font-weight:500;font-size:23px;line-height:1.25}
+.room-t h3 em{font-style:italic;color:var(--brass-soft)}
+.room-t p{margin-top:10px;font-size:12.5px;color:var(--muted);max-width:29ch;margin-inline:auto}
+.mins{display:flex;justify-content:center;gap:26px;margin-top:22px}
+.min b{display:block;font-family:"Roboto",sans-serif;font-weight:500;font-size:26px;color:var(--brass-soft);line-height:1}
+.min span{display:block;margin-top:5px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* ================= không gian cho sự kiện ================= */
+.ev{padding:0 16px}
+.ev-img{height:180px;border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative;isolation:isolate}
+.ev-img img{filter:brightness(.58) saturate(1.05)}
+.ev-img::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(23,11,29,.72), rgba(23,11,29,.05) 62%)}
+.ev p{margin-top:14px;font-size:13px;color:var(--muted);max-width:32ch}
+.ev-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.ev-tags span{
+  padding:7px 13px;border-radius:99px;font-size:11px;color:var(--brass-soft);
+  border:1px solid rgba(210,165,102,.28);background:rgba(210,165,102,.07);
+}
+.ev-cta{
+  display:block;margin-top:16px;padding:14px;border-radius:99px;text-align:center;
+  text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.04em;
+  color:#241a10;background:var(--brass);
+  box-shadow:inset 0 1px 0 rgba(255,246,224,.55), 0 8px 22px rgba(210,165,102,.22);
+}
+
+/* ================= hệ sinh thái ================= */
+.eco{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;margin-top:16px}
+.eco div{
+  padding:15px 15px 16px;border-radius:16px;background:var(--night2);border:1px solid var(--line);
+}
+.eco b{display:block;font-weight:500;font-size:13.5px;color:var(--cream)}
+.eco span{display:block;margin-top:4px;font-size:11px;line-height:1.45;color:var(--muted)}
+
+/* ================= chân trang ================= */
+.foot-i{margin:40px 16px 0;border-top:1px solid var(--line);padding-top:6px}
+.fr{display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:13px 6px;border-bottom:1px solid var(--line);font-size:12.5px}
+.fr .k{color:var(--muted);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase}
+.fr a{color:var(--brass-soft);text-decoration:none}
+.note{margin:16px 16px 0;padding:12px 14px;border-radius:13px;font-size:11px;line-height:1.6;
+  color:var(--muted);background:rgba(210,165,102,.06);border:1px solid rgba(210,165,102,.18)}
+.note b{color:var(--brass-soft);font-weight:500}
+.copy{text-align:center;font-size:9px;letter-spacing:.22em;color:var(--muted);opacity:.6;padding:26px 0 8px}
+
+/* ================= NAV · Samten ở giữa, nhô lên ================= */
+nav{
+  position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;z-index:40;
+  display:flex;align-items:flex-end;justify-content:space-around;
+  padding:10px 8px calc(10px + var(--safe-b));
+  background:linear-gradient(to top, rgba(23,11,29,.97) 55%, rgba(23,11,29,0));
+}
+.nb{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;letter-spacing:.06em;
+  color:var(--muted);padding:6px 10px;background:none;border:0;font-family:inherit}
+.nb svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.nb.on{color:var(--brass)}
+/* ô giữa: vòng đồng nhô lên, là mục Samten */
+.nb.mid{padding:0 10px}
+.nb.mid .ring{
+  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:3px;
+  background:radial-gradient(circle closest-side, #f3d9ab, var(--brass) 88%);
+  box-shadow:0 8px 22px rgba(210,165,102,.34), inset 0 1px 0 rgba(255,246,224,.6);
+  transform:translateY(-13px);
+}
+.nb.mid .ring span{
+  font-family:"Roboto",sans-serif;font-weight:500;font-size:15px;letter-spacing:.06em;color:#241a10;
+}
+.nb.mid .lbl{margin-top:-10px;color:var(--brass)}
+</style>
+
+<div class="app">
+  <div class="pv">Bản thiết kế để duyệt · chưa đưa vào app</div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="bg"><img alt="" src="https://images.pexels.com/photos/6252095/pexels-photo-6252095.jpeg?auto=compress&cs=tinysrgb&w=800"></div>
+    <div class="hero-in">
+      <div class="mark">SAM<b>TEN</b></div>
+      <div class="mark-sub">Music &amp; Wellbeing Platform</div>
+      <div class="mark-line"></div>
+      <p class="hero-say">Chuông thật, phòng thật, và một thư viện thanh âm không bao giờ lặp lại.</p>
+    </div>
+    <div class="cue">⌄</div>
+  </header>
+
+  <!-- TẦM NHÌN -->
+  <section class="vision">
+    <div class="eyebrow">Tầm nhìn</div>
+    <p>Mỗi lần lắng là <em>một lần riêng</em>. Không bản nào phát lại hai lần giống nhau.</p>
+  </section>
+
+  <!-- NĂM DANH MỤC -->
+  <div class="sec-h"><h2>Năm danh mục</h2><span>Five categories</span></div>
+  <div class="cats">
+    <article class="cat">
+      <img alt="" src="https://images.pexels.com/photos/3544322/pexels-photo-3544322.jpeg?auto=compress&cs=tinysrgb&w=800">
+      <span class="dot" style="background:#e0b978"></span>
+      <div class="t"><div class="en">Sound</div><div class="vi">Âm chuông</div></div>
+    </article>
+    <article class="cat">
+      <img alt="" src="https://images.pexels.com/photos/6634430/pexels-photo-6634430.jpeg?auto=compress&cs=tinysrgb&w=800">
+      <span class="dot" style="background:#b28ee4"></span>
+      <div class="t"><div class="en">Meditation</div><div class="vi">Thiền</div></div>
+    </article>
+    <article class="cat">
+      <img alt="" src="https://images.pexels.com/photos/1516903/pexels-photo-1516903.jpeg?auto=compress&cs=tinysrgb&w=800">
+      <span class="dot" style="background:#7abec6"></span>
+      <div class="t"><div class="en">Music Relaxation</div><div class="vi">Nhạc thư giãn</div></div>
+    </article>
+    <article class="cat">
+      <img alt="" src="https://images.pexels.com/photos/3116422/pexels-photo-3116422.jpeg?auto=compress&cs=tinysrgb&w=800">
+      <span class="dot" style="background:#8fbe93"></span>
+      <div class="t"><div class="en">Noise</div><div class="vi">Thiên nhiên</div></div>
+    </article>
+    <article class="cat">
+      <img alt="" src="https://images.pexels.com/photos/31359311/pexels-photo-31359311.jpeg?auto=compress&cs=tinysrgb&w=800">
+      <span class="dot" style="background:#e8ac8e"></span>
+      <div class="t"><div class="en">Instrument</div><div class="vi">Nhạc cụ</div></div>
+    </article>
+  </div>
+
+  <!-- ÂM THANH SỐNG -->
+  <section class="live">
+    <div class="orb"><i></i><i></i><i></i></div>
+    <h3>Thanh âm <em>sống</em></h3>
+    <p>Sinh trực tiếp trên máy bạn theo thời gian thực, không dựng từ file thu sẵn.</p>
+    <div class="stamp">Không bản nào lặp lại</div>
+  </section>
+
+  <!-- CĂN PHÒNG THẬT -->
+  <section class="room">
+    <div class="room-img">
+      <img alt="Phòng gong và chuông tại Samten Space" loading="lazy"
+        src="https://images.pexels.com/photos/5602498/pexels-photo-5602498.jpeg?auto=compress&cs=tinysrgb&w=800">
+    </div>
+    <div class="room-t">
+      <h3>Và một <em>căn phòng thật</em></h3>
+      <p>App là cửa vào. Buổi trọn vẹn diễn ra tại Samten Space, với chuông thật và người dẫn thật.</p>
+      <div class="mins">
+        <div class="min"><b>60</b><span>phút mỗi buổi</span></div>
+        <div class="min"><b>1</b><span>tiếng chuông mở đầu</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KHÔNG GIAN CHO SỰ KIỆN -->
+  <div class="sec-h" style="margin-top:46px"><h2>Không gian cho sự kiện</h2><span>Space &amp; Partnership</span></div>
+  <section class="ev">
+    <div class="ev-img">
+      <img alt="Không gian tổ chức tại Samten Space" loading="lazy"
+        src="https://images.pexels.com/photos/8391649/pexels-photo-8391649.jpeg?auto=compress&cs=tinysrgb&w=800">
+    </div>
+    <p>Samten Space mở cho các buổi tổ chức riêng, và cho hợp tác phát triển trong lĩnh vực Music &amp; Wellbeing.</p>
+    <div class="ev-tags">
+      <span>Workshop &amp; lớp học</span>
+      <span>Listening session</span>
+      <span>Sự kiện doanh nghiệp</span>
+      <span>Sound bath riêng</span>
+      <span>Hợp tác sản xuất</span>
+    </div>
+    <a class="ev-cta" href="tel:0918939980">Trao đổi về không gian · 0918 939 980</a>
+  </section>
+
+  <!-- HỆ SINH THÁI -->
+  <div class="sec-h" style="margin-top:46px"><h2>Hệ sinh thái</h2><span>Ecosystem</span></div>
+  <div class="eco">
+    <div><b>Mantra Plus</b><span>Câu lạc bộ thành viên</span></div>
+    <div><b>Đào tạo</b><span>Khóa học theo lộ trình</span></div>
+    <div><b>Trị liệu cá nhân</b><span>Buổi riêng một kèm một</span></div>
+    <div><b>Thư viện thanh âm</b><span>Producer Samten, nhạc cụ thật</span></div>
+  </div>
+
+  <!-- CHÂN TRANG -->
+  <div class="foot-i">
+    <div class="fr"><span class="k">Không gian</span><span>Samten Space · Lầu G</span></div>
+    <div class="fr"><span class="k">Hotline</span><a href="tel:0918939980">0918 939 980</a></div>
+    <div class="fr"><span class="k">Facebook</span><a href="https://www.facebook.com/samten.vn/" target="_blank" rel="noopener">samten.vn</a></div>
+  </div>
+  <div class="note"><b>Lưu ý:</b> Samten Sound &amp; Music Therapy là trung tâm trị liệu âm thanh, không liên quan tới khu du lịch Samten Hills tại Đà Lạt.</div>
+  <div class="copy">© 2026 SAMTEN SOUND &amp; MUSIC THERAPY</div>
+</div>
+
+<nav aria-label="Điều hướng (mô phỏng)">
+  <button class="nb">
+    <svg viewBox="0 0 24 24"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg>
+    Thư viện
+  </button>
+  <button class="nb mid on">
+    <span class="ring"><span>S</span></span>
+    <span class="lbl">Samten</span>
+  </button>
+  <button class="nb">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+    Cài đặt
+  </button>
+</nav>
