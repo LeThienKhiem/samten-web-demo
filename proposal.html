@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Samten — Hệ Sinh Thái Số · Đề Xuất Dự Án</title>
+<title>Samten · Hệ Sinh Thái Số · Đề Xuất Dự Án</title>
 <meta name="description" content="Đề xuất hệ sinh thái số Samten Sound & Music Therapy: thị trường, kiến trúc, sitemap, sản phẩm thật, chiến lược nội dung.">
 <meta name="theme-color" content="#1c0d23">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,7 +41,7 @@ h3 em{font-style:italic;color:var(--brass)}
 .note{color:var(--muted);font-size:12px;margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}
 .src{color:#a3957c;font-size:10px;margin-top:12px}
 
-/* hiệu ứng hiện dần — như welcome page bản chạy thật */
+/* hiệu ứng hiện dần · như welcome page bản chạy thật */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease}
 .rv.in{opacity:1;transform:none}
 .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}.rv.d5{transition-delay:.6s}
@@ -220,6 +220,37 @@ tr.total td{background:#f2ead9;font-weight:500}
 .contact-card{border-radius:15px;padding:12px 16px;font-size:12.5px;background:#2a1836;border:1px solid var(--plum-line)}
 .contact-card .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a99cb8;margin-bottom:2px}
 
+/* ====== BẢN MOBILE CỦA HAI SƠ ĐỒ ======
+   SVG viewBox 700 thu về ~320px trên điện thoại, tỉ lệ 0,467 nên chữ 13px
+   thành 6,1px và chữ 10px thành 4,7px · không đọc được. Phóng chữ trong
+   viewBox thì tràn khỏi rect (nhãn 16 ký tự rộng hơn ô 160 đơn vị), nên
+   dưới 680px thay hẳn bằng khối HTML xếp dọc, chữ ăn theo cỡ chữ thân bài. */
+.mob-only{display:none}
+@media(max-width:680px){
+  .svg-only{display:none}
+  .mob-only{display:block}
+}
+.hub-m,.fan-m{margin-top:16px}
+.hub-core,.fan-src{
+  background:var(--brass);color:#fdf9f1;border-radius:14px;padding:11px 14px;
+  text-align:center;font-weight:500;font-size:14px;
+}
+.hub-core span,.fan-src span{display:block;font-size:11.5px;color:#f0ddba;font-weight:300}
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:10px}
+.hub-cell{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px 11px}
+.hub-cell b{display:block;font-weight:500;font-size:13px}
+.hub-cell span{display:block;font-size:11px;color:var(--muted);line-height:1.4;margin-top:2px}
+.fan-arrow{text-align:center;color:var(--brass);font-size:15px;line-height:1;padding:6px 0}
+.fan-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.fan-list li{
+  background:var(--card);border:1px solid var(--line);border-radius:11px;
+  padding:8px 12px;font-size:12.5px;display:flex;gap:9px;align-items:baseline;
+}
+.fan-list li i{
+  font-family:"Cormorant Garamond",serif;font-style:normal;color:var(--brass);
+  font-size:15px;flex:0 0 11px;
+}
+
 @media print{
   main{height:auto;overflow:visible}
   .slide{min-height:auto;page-break-after:always;padding:34px 26px}
@@ -233,7 +264,7 @@ tr.total td{background:#f2ead9;font-weight:500}
 
 <main id="deck">
 
-<!-- 1. BÌA — hiệu ứng welcome page thật -->
+<!-- 1. BÌA · hiệu ứng welcome page thật -->
 <section class="slide dark">
   <div class="cover-photo"><img alt="" src="https://images.pexels.com/photos/6252095/pexels-photo-6252095.jpeg?auto=compress&cs=tinysrgb&w=1200" onerror="this.style.display='none'"></div>
   <canvas id="coverFx"></canvas>
@@ -241,7 +272,7 @@ tr.total td{background:#f2ead9;font-weight:500}
     <p class="breathe rv" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#cfc3ad">Trước khi bắt đầu… hãy thở một hơi thật chậm.</p>
     <div class="kicker rv d1" style="margin-top:22px">Sound &amp; Music Therapy · Đề xuất dự án · 2026 &nbsp;<span class="gdot"></span></div>
     <h1 class="rv d2">Hệ sinh thái số<br><em>Samten</em></h1>
-    <p class="lead rv d3">Một hệ thống duy nhất kết nối trung tâm trị liệu — website, ứng dụng chữa lành, kho thanh âm, câu lạc bộ hội viên và bộ máy vận hành.</p>
+    <p class="lead rv d3">Một hệ thống duy nhất kết nối trung tâm trị liệu · website, ứng dụng chữa lành, kho thanh âm, câu lạc bộ hội viên và bộ máy vận hành.</p>
     <p class="note rv d4">17 trang · Trượt xuống hoặc dùng phím mũi tên · Kèm bản chạy thật: <b style="color:#e3c088">samten-web.vercel.app</b> · bảng khối lượng &amp; ngân sách (Excel)</p>
   </div>
 </section>
@@ -249,12 +280,12 @@ tr.total td{background:#f2ead9;font-weight:500}
 <!-- 2. TRIẾT LÝ -->
 <section class="slide">
   <div class="kicker rv">Phần 01 · Nền tảng</div>
-  <h2 class="rv d1">Samten là <em>Therapy</em> — khoa học, trung dung, có minh chứng</h2>
+  <h2 class="rv d1">Samten là <em>Therapy</em> · khoa học, trung dung, có cơ sở nghiên cứu</h2>
   <div class="num-list">
-    <div class="num-item rv d1"><div class="n">a</div><div class="bd"><b>Vận hành như một Viện R&amp;D.</b><p>Mọi liệu pháp đều có nghiên cứu chuyên sâu và cơ sở minh chứng — không phải "healing" cảm tính.</p></div></div>
-    <div class="num-item rv d2"><div class="n">b</div><div class="bd"><b>Cân bằng Thân — Tâm — Trí — Năng lượng — Cảm xúc</b><p>qua liệu pháp âm thanh khoa học: nghiên cứu, đào tạo, câu lạc bộ, show đa giác quan.</p></div></div>
-    <div class="num-item rv d3"><div class="n">c</div><div class="bd"><b>Kích hoạt, không hứa hẹn.</b><p>Samten không "chữa" ai — Samten kích hoạt khả năng tự phục hồi vốn có, đưa năng lượng nội tại về trạng thái nguyên bản (Dhyāna).</p></div></div>
-    <div class="num-item rv d4"><div class="n">d</div><div class="bd"><b>Trung dung tuyệt đối.</b><p>Không tôn giáo, tôn trọng trải nghiệm cá nhân — hệ thống số không hứa "chữa bệnh", chỉ mở không gian để lắng.</p></div></div>
+    <div class="num-item rv d1"><div class="n">a</div><div class="bd"><b>Vận hành như một Viện R&amp;D.</b><p>Mọi liệu pháp đều được tra cứu và đối chiếu với nghiên cứu quốc tế, không phải "healing" cảm tính.</p></div></div>
+    <div class="num-item rv d2"><div class="n">b</div><div class="bd"><b>Cân bằng Thân · Tâm · Trí · Năng lượng · Cảm xúc</b><p>qua liệu pháp âm thanh khoa học: nghiên cứu, đào tạo, câu lạc bộ, show đa giác quan.</p></div></div>
+    <div class="num-item rv d3"><div class="n">c</div><div class="bd"><b>Kích hoạt, không hứa hẹn.</b><p>Samten không "chữa" ai · Samten kích hoạt khả năng tự phục hồi vốn có, đưa năng lượng nội tại về trạng thái nguyên bản (Dhyāna).</p></div></div>
+    <div class="num-item rv d4"><div class="n">d</div><div class="bd"><b>Trung dung tuyệt đối.</b><p>Không tôn giáo, tôn trọng trải nghiệm cá nhân · hệ thống số không hứa "chữa bệnh", chỉ mở không gian để lắng.</p></div></div>
   </div>
 </section>
 
@@ -264,7 +295,7 @@ tr.total td{background:#f2ead9;font-weight:500}
   <h2 class="rv d1">Thế giới đang trả tiền để được lắng.<br>Việt Nam <em>gần như chưa có ai phục vụ</em></h2>
   <div class="growth rv d2">
     <div class="g-item">
-      <div class="lb"><b>Ứng dụng thiền &amp; mindfulness toàn cầu</b><span>CAGR 14,7%/năm</span></div>
+      <div class="lb"><b>Ứng dụng thiền &amp; mindfulness toàn cầu</b><span>CAGR 15,5%/năm</span></div>
       <div class="g-pair"><div class="g-bar now" style="width:31%">2025 · 2,2 tỷ USD</div><div class="g-bar fut" style="width:100%">2033 · 6,99 tỷ USD</div></div>
     </div>
     <div class="g-item">
@@ -273,27 +304,27 @@ tr.total td{background:#f2ead9;font-weight:500}
     </div>
   </div>
   <div class="big-stat rv d3">
-    <div class="stat"><div class="v">15tr</div><div class="k">người Việt (14,9% dân số) có rối loạn tâm lý phổ biến — Bộ Y tế/WHO</div></div>
-    <div class="stat"><div class="v">0,3</div><div class="k">bác sĩ tâm thần/100.000 dân, so với 9,0 toàn cầu — 90% chưa được chăm sóc</div></div>
-    <div class="stat"><div class="v">1,98</div><div class="k">lần stress/tuần ở người Việt; nhu cầu app thiền &amp; thư giãn tăng nhanh nhất — Cimigo 2025</div></div>
+    <div class="stat"><div class="v">15tr</div><div class="k">người Việt (14,9% dân số) có rối loạn tâm lý phổ biến · Bộ Y tế/WHO</div></div>
+    <div class="stat"><div class="v">0,3</div><div class="k">bác sĩ tâm thần/100.000 dân, so với 9,0 toàn cầu · 90% chưa được chăm sóc</div></div>
+    <div class="stat"><div class="v">1,98</div><div class="k">lần stress/tuần ở người Việt; nhu cầu app thiền &amp; thư giãn tăng nhanh nhất · Cimigo 2025</div></div>
   </div>
-  <p class="note rv d4">Samten không thay thế y khoa — nhưng khoảng trống "được lắng mỗi ngày" ở Việt Nam khổng lồ, và chưa thương hiệu Việt nào chiếm lĩnh âm thanh trị liệu. Luật hiện hành còn yêu cầu doanh nghiệp &gt;50 nhân sự có chương trình đánh giá stress — cửa corporate wellness cho giai đoạn sau.</p>
+  <p class="note rv d4">Samten không thay thế y khoa, nhưng khoảng trống "được lắng mỗi ngày" ở Việt Nam khổng lồ, và chưa thương hiệu Việt nào chiếm lĩnh âm thanh trị liệu. Luật hiện hành còn yêu cầu doanh nghiệp &gt;50 nhân sự có chương trình đánh giá stress · cửa corporate wellness cho giai đoạn sau.</p>
   <p class="src rv d4">Nguồn: Grand View Research 2026 · MetaTech Insights 2025 · Coherent MI 2026 · Ken Research 2026 (dẫn Bộ Y tế/WHO) · Cimigo 2025</p>
 </section>
 
 <!-- 4. VẤN ĐỀ + MỤC TIÊU (gộp) -->
 <section class="slide">
   <div class="kicker rv">Phần 03 · Từ điểm nghẽn đến đích 12 tháng</div>
-  <h2 class="rv d1">Hôm nay làm tay — <em>sang năm đo bằng số</em></h2>
+  <h2 class="rv d1">Hôm nay làm tay · <em>sang năm đo bằng số</em></h2>
   <div class="two">
     <div class="rv d2">
       <h3 style="margin-top:0">Năm điểm nghẽn</h3>
       <div class="num-list" style="margin-top:10px">
-        <div class="num-item"><div class="n">1</div><div class="bd"><b>Dữ liệu khách rời rạc</b><p>sổ tay, Zalo, Excel — không biết ai quý nhất.</p></div></div>
-        <div class="num-item"><div class="n">2</div><div class="bd"><b>Vận hành thủ công</b><p>xếp lịch, điểm danh, thu phí — đông khách là quá tải.</p></div></div>
+        <div class="num-item"><div class="n">1</div><div class="bd"><b>Dữ liệu khách rời rạc</b><p>sổ tay, Zalo, Excel · không biết ai quý nhất.</p></div></div>
+        <div class="num-item"><div class="n">2</div><div class="bd"><b>Vận hành thủ công</b><p>xếp lịch, điểm danh, thu phí · đông khách là quá tải.</p></div></div>
         <div class="num-item"><div class="n">3</div><div class="bd"><b>Kho âm thanh "ngủ"</b><p>track hay nhưng chưa thành sản phẩm.</p></div></div>
         <div class="num-item"><div class="n">4</div><div class="bd"><b>Referral không đo được</b><p>kênh mạnh nhất lại không có mã, không có thưởng.</p></div></div>
-        <div class="num-item"><div class="n">5</div><div class="bd"><b>Mọi thứ qua hotline</b><p>khách trẻ quen tự đặt — bắt gọi điện là mất họ.</p></div></div>
+        <div class="num-item"><div class="n">5</div><div class="bd"><b>Mọi thứ qua hotline</b><p>khách trẻ quen tự đặt · bắt gọi điện là mất họ.</p></div></div>
       </div>
     </div>
     <div class="rv d3">
@@ -315,7 +346,7 @@ tr.total td{background:#f2ead9;font-weight:500}
 <!-- 5. SƠ ĐỒ TỔNG THỂ -->
 <section class="slide">
   <div class="kicker rv">Phần 04 · Sơ đồ tổng thể</div>
-  <h2 class="rv d1">Toàn cảnh hệ sinh thái — <em>từ lượt xem đến hội viên</em></h2>
+  <h2 class="rv d1">Toàn cảnh hệ sinh thái · <em>từ lượt xem đến hội viên</em></h2>
   <div class="layers">
     <div class="layer rv d1"><div class="lt">Tầng 1 · Kênh tiếp cận</div><div class="chips"><span class="chip">TikTok / Facebook / IG</span><span class="chip">YouTube (kho nội dung)</span><span class="chip">Google</span><span class="chip">Bạn bè giới thiệu</span></div></div>
     <div class="l-arrow rv d1">↓</div>
@@ -327,14 +358,14 @@ tr.total td{background:#f2ead9;font-weight:500}
     <div class="l-arrow rv d4">↓</div>
     <div class="layer core rv d5"><div class="lt">Nền móng</div><div class="chips"><span class="chip">Một hồ sơ khách duy nhất</span><span class="chip">Kho dữ liệu tập trung</span><span class="chip">Bảo vệ dữ liệu cá nhân theo luật VN</span></div></div>
   </div>
-  <p class="note rv d5">Mỗi tầng nuôi tầng dưới: nội dung kéo người xem → điểm chạm biến người xem thành khách → sản phẩm biến khách thành hội viên → vận hành giữ chân — mọi tương tác chảy về một hồ sơ duy nhất.</p>
+  <p class="note rv d5">Mỗi tầng nuôi tầng dưới: nội dung kéo người xem → điểm chạm biến người xem thành khách → sản phẩm biến khách thành hội viên → vận hành giữ chân · mọi tương tác chảy về một hồ sơ duy nhất.</p>
 </section>
 
 <!-- 6. HUB 6 NHÓM -->
 <section class="slide">
   <div class="kicker rv">Phần 05 · Sáu nhóm sản phẩm</div>
   <h2 class="rv d1">Sáu mảnh ghép, <em>một trái tim</em></h2>
-  <svg class="rv d2" viewBox="0 0 700 330" role="img" aria-label="Sơ đồ 6 nhóm sản phẩm quanh hồ sơ khách" style="width:100%;height:auto;margin-top:16px">
+  <svg class="rv d2 svg-only" viewBox="0 0 700 330" role="img" aria-label="Sơ đồ 6 nhóm sản phẩm quanh hồ sơ khách" style="width:100%;height:auto;margin-top:16px">
     <defs><style>.hub{fill:#a3762f}.spoke{fill:#fdf9f1;stroke:rgba(42,32,22,.18)}.lbl{font-size:13px;fill:#2a2016;font-family:'Be Vietnam Pro',sans-serif}.lbl2{font-size:10px;fill:#8a7b64;font-family:'Be Vietnam Pro',sans-serif}.ln{stroke:#c49a55;stroke-width:1.3;stroke-dasharray:3 4;fill:none}</style></defs>
     <line class="ln" x1="350" y1="165" x2="120" y2="60"/><line class="ln" x1="350" y1="165" x2="350" y2="52"/><line class="ln" x1="350" y1="165" x2="580" y2="60"/>
     <line class="ln" x1="350" y1="165" x2="120" y2="272"/><line class="ln" x1="350" y1="165" x2="350" y2="282"/><line class="ln" x1="350" y1="165" x2="580" y2="272"/>
@@ -348,18 +379,29 @@ tr.total td{background:#f2ead9;font-weight:500}
     <g><rect class="spoke" x="270" y="253" rx="14" width="160" height="58"/><text class="lbl" x="350" y="278" text-anchor="middle">Kho thanh âm</text><text class="lbl2" x="350" y="295" text-anchor="middle">200 master · 500+ tài sản</text></g>
     <g><rect class="spoke" x="500" y="243" rx="14" width="160" height="58"/><text class="lbl" x="580" y="268" text-anchor="middle">Vận hành</text><text class="lbl2" x="580" y="285" text-anchor="middle">Kiosk · quản trị · báo cáo</text></g>
   </svg>
+  <div class="hub-m mob-only rv d2">
+    <div class="hub-core">Hồ sơ khách<span>duy nhất</span></div>
+    <div class="hub-grid">
+      <div class="hub-cell"><b>Website</b><span>Tìm thấy · tin tưởng</span></div>
+      <div class="hub-cell"><b>App chữa lành</b><span>Thực hành mỗi ngày</span></div>
+      <div class="hub-cell"><b>Đặt lịch</b><span>Lớp · trị liệu 1-1</span></div>
+      <div class="hub-cell"><b>Mantra Plus Club</b><span>Hội viên · giới thiệu</span></div>
+      <div class="hub-cell"><b>Kho thanh âm</b><span>200 master · 500+ tài sản</span></div>
+      <div class="hub-cell"><b>Vận hành</b><span>Kiosk · quản trị · báo cáo</span></div>
+    </div>
+  </div>
   <p class="note rv d3">Thứ tự xây: nền vận hành → website → đặt lịch → hội viên. Kho thanh âm và Academy lớn dần song song theo nhịp sản xuất nội dung.</p>
 </section>
 
 <!-- 7. NGƯỜI DÙNG + HÀNH TRÌNH (gộp) -->
 <section class="slide">
   <div class="kicker rv">Phần 06 · Người dùng &amp; hành trình</div>
-  <h2 class="rv d1">Bốn gương mặt — <em>một vòng lặp</em></h2>
+  <h2 class="rv d1">Bốn gương mặt · <em>một vòng lặp</em></h2>
   <div class="two">
     <div class="rv d2">
       <div class="cards" style="grid-template-columns:1fr;margin-top:0">
-        <div class="cardx"><div class="t">Người tò mò</div><p>Thấy sound bath trên TikTok — cần hiểu Samten trong 30 giây, đặt buổi đầu trong 2 phút.</p></div>
-        <div class="cardx"><div class="t">Hội viên Mantra Plus</div><p>Đi đều mỗi tuần — cần xem lịch, giữ chỗ, quyền lợi còn lại, không phải nhắn hỏi lễ tân.</p></div>
+        <div class="cardx"><div class="t">Người tò mò</div><p>Thấy sound bath trên TikTok · cần hiểu Samten trong 30 giây, đặt buổi đầu trong 2 phút.</p></div>
+        <div class="cardx"><div class="t">Hội viên Mantra Plus</div><p>Đi đều mỗi tuần · cần xem lịch, giữ chỗ, quyền lợi còn lại, không phải nhắn hỏi lễ tân.</p></div>
         <div class="cardx"><div class="t">Học viên A1 → B3</div><p>Cần lịch học, tài liệu, điểm danh trong một chỗ.</p></div>
         <div class="cardx"><div class="t">Đội ngũ Samten</div><p>Cần bớt việc tay, nhìn toàn cảnh trong một màn hình.</p></div>
       </div>
@@ -369,9 +411,9 @@ tr.total td{background:#f2ead9;font-weight:500}
       <div class="journey-steps">
         <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Biết đến</b><p>Video TikTok/YouTube → website, app nghe thử miễn phí.</p></div></div>
         <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Trải nghiệm đầu</b><p>Tự đặt sound bath trên điện thoại, thanh toán online, nhắc lịch tự động.</p></div></div>
-        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Đến Space</b><p>Kiosk nhận ra ngay — lễ tân được báo, khách lên thẳng Lầu G.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Đến Space</b><p>Kiosk nhận ra ngay · lễ tân được báo, khách lên thẳng Lầu G.</p></div></div>
         <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Thành hội viên</b><p>Ưu đãi sau buổi đầu; nghe app mỗi tối, quyền lợi tự trừ.</p></div></div>
-        <div class="jstep"><div class="dotcol"><div class="dot"></div></div><div class="bd"><b>Giới thiệu bạn</b><p>Mã riêng — cả hai nhận thưởng. Vòng lặp bắt đầu lại.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div></div><div class="bd"><b>Giới thiệu bạn</b><p>Mã riêng · cả hai nhận thưởng. Vòng lặp bắt đầu lại.</p></div></div>
       </div>
     </div>
   </div>
@@ -430,7 +472,7 @@ tr.total td{background:#f2ead9;font-weight:500}
 <!-- 9. KHỐI LƯỢNG MÀN HÌNH -->
 <section class="slide">
   <div class="kicker rv">Phần 08 · Khối lượng công việc</div>
-  <h2 class="rv d1">105 màn hình thiết kế — <em>62 cho bản đầu tiên</em></h2>
+  <h2 class="rv d1">105 màn hình thiết kế · <em>62 cho bản đầu tiên</em></h2>
   <table class="rv d2">
     <tr><th>Khu vực</th><th class="c">Tổng</th><th class="c">Bản đầu (MVP)</th><th>Ví dụ tiêu biểu</th></tr>
     <tr><td><b>Website công khai</b></td><td class="c">32</td><td class="c">24</td><td>Trang chủ, dịch vụ, khóa học, đặt lịch 4 bước</td></tr>
@@ -440,18 +482,18 @@ tr.total td{background:#f2ead9;font-weight:500}
     <tr class="total"><td>Tổng cộng</td><td class="c">105</td><td class="c">62</td><td>Danh mục đầy đủ trong file đặc tả đính kèm</td></tr>
   </table>
   <div class="bar-row rv d3">
-    <div class="bar-item"><div class="lb"><b>Bản đầu tiên (4 tháng)</b><span>62 màn hình — mọi luồng tạo doanh thu</span></div><div class="tr"><div class="fl" style="width:59%"></div></div></div>
-    <div class="bar-item"><div class="lb"><b>Giai đoạn 2</b><span>43 màn hình — Academy đầy đủ, thư viện thương mại, báo cáo sâu</span></div><div class="tr"><div class="fl" style="width:41%;opacity:.45"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>Bản đầu tiên (4 tháng)</b><span>62 màn hình · mọi luồng tạo doanh thu</span></div><div class="tr"><div class="fl" style="width:59%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>Giai đoạn 2</b><span>43 màn hình · Academy đầy đủ, thư viện thương mại, báo cáo sâu</span></div><div class="tr"><div class="fl" style="width:41%;opacity:.45"></div></div></div>
   </div>
-  <p class="note rv d3">Đây là một hệ thống bốn ứng dụng nói chuyện với nhau — không phải "một cái website".</p>
+  <p class="note rv d3">Đây là một hệ thống bốn ứng dụng nói chuyện với nhau, không phải "một cái website".</p>
 </section>
 
 <!-- 10. HÌNH SẢN PHẨM THẬT -->
 <section class="slide dark">
   <div class="inner">
-    <div class="kicker rv">Phần 09 · Không phải bản vẽ — sản phẩm đã chạy</div>
+    <div class="kicker rv">Phần 09 · Không phải bản vẽ · sản phẩm đã chạy</div>
     <h2 class="rv d1" style="color:var(--cream)">Xem bằng mắt, <em>chạm bằng tay</em></h2>
-    <p class="lead rv d2">Giao diện thật của bản đang chạy tại <a href="https://samten-web.vercel.app" style="color:#e3c088">samten-web.vercel.app</a> — mở trên điện thoại là nghe được, chơi được.</p>
+    <p class="lead rv d2">Giao diện thật của bản đang chạy tại <a href="https://samten-web.vercel.app" style="color:#e3c088">samten-web.vercel.app</a> · mở trên điện thoại là nghe được, chơi được.</p>
     <div class="shots">
       <div class="rv d2" style="flex:1 1 100%;max-width:560px">
         <div class="mk-browser">
@@ -473,7 +515,7 @@ tr.total td{background:#f2ead9;font-weight:500}
             <div class="c"><img alt="" src="https://images.pexels.com/photos/31359311/pexels-photo-31359311.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Instrument</span></div>
           </div>
         </div>
-        <div class="shot-cap">Trang chào web — năm danh mục thanh âm</div>
+        <div class="shot-cap">Trang chào web · năm danh mục thanh âm</div>
       </div>
       <div class="rv d3">
         <div class="mk-phone">
@@ -500,7 +542,7 @@ tr.total td{background:#f2ead9;font-weight:500}
             <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/36203419/pexels-photo-36203419.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Thiên nhiên</span></div>
             <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/1516903/pexels-photo-1516903.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Nhạc thư giãn</span></div>
           </div>
-          <div class="mk-nav"><i class="on"></i><i></i><i></i><i></i></div>
+          <div class="mk-nav"><i class="on"></i><i></i><i></i></div>
         </div>
         <div class="shot-cap">Thư viện</div>
       </div>
@@ -519,29 +561,29 @@ tr.total td{background:#f2ead9;font-weight:500}
         <div class="shot-cap">Trình phát · hẹn giờ ngủ</div>
       </div>
     </div>
-    <p class="note rv d5">Hành trình 3 phút, ngân cùng chuông, vẽ thanh âm, pha trộn, nhịp não Alpha/Theta — tất cả đang chạy trong bản demo. Đưa điện thoại cho khách và đeo tai nghe: ba phút đó thuyết phục hơn mọi trang chữ.</p>
+    <p class="note rv d5">Hành trình 3 phút, ngân cùng chuông, vẽ thanh âm, pha trộn, nhịp não Alpha/Theta · tất cả đang chạy trong bản demo. Đưa điện thoại cho khách và đeo tai nghe: ba phút đó thuyết phục hơn mọi trang chữ.</p>
   </div>
 </section>
 
 <!-- 11. WEBSITE & APP (gộp) -->
 <section class="slide">
   <div class="kicker rv">Phần 10 · Hai điểm chạm chính</div>
-  <h2 class="rv d1">Website mở cửa — <em>app giữ nhịp mỗi ngày</em></h2>
+  <h2 class="rv d1">Website mở cửa · <em>app giữ nhịp mỗi ngày</em></h2>
   <div class="two">
     <div class="rv d2">
-      <h3 style="margin-top:0">Website — cửa chính</h3>
+      <h3 style="margin-top:0">Website · cửa chính</h3>
       <div class="num-list" style="margin-top:10px">
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Kể đúng câu chuyện Therapy</b><p>song ngữ Việt/Anh, chuẩn tìm kiếm Google.</p></div></div>
-        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi dịch vụ là một trang bán hàng</b><p>ai phù hợp, giá, lịch khai giảng — nút đặt bên cạnh.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi dịch vụ là một trang bán hàng</b><p>ai phù hợp, giá, lịch khai giảng · nút đặt bên cạnh.</p></div></div>
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Đặt lịch 4 bước, thanh toán tại chỗ</b><p>nhắc tự động trước 24 giờ và 2 giờ.</p></div></div>
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Đội Samten tự đăng bài</b><p>quản trị nội dung như soạn văn bản.</p></div></div>
       </div>
     </div>
     <div class="rv d3">
-      <h3 style="margin-top:0">App — Samten trong túi áo</h3>
+      <h3 style="margin-top:0">App · Samten trong túi áo</h3>
       <div class="num-list" style="margin-top:10px">
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Nghe mỗi tối, nhớ mỗi ngày</b><p>thư viện 5 danh mục, hẹn giờ ngủ, chế độ chìm đắm.</p></div></div>
-        <div class="num-item"><div class="n">·</div><div class="bd"><b>Nhạc cụ tương tác</b><p>gõ chuông, xoa vành, ngân giọng, vẽ thanh âm — không app quốc tế nào có.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Nhạc cụ tương tác</b><p>gõ chuông, xoa vành, ngân giọng, vẽ thanh âm · không app quốc tế nào có.</p></div></div>
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Cầu nối về Space</b><p>nghe 3 phút trên app → đặt buổi 60 phút thật.</p></div></div>
         <div class="num-item"><div class="n">·</div><div class="bd"><b>Web-app trước, native sau</b><p>dùng ngay không cần tải; app cài đặt khi kho nội dung đủ dày.</p></div></div>
       </div>
@@ -552,8 +594,8 @@ tr.total td{background:#f2ead9;font-weight:500}
 <!-- 12. 1 MASTER → 7 -->
 <section class="slide">
   <div class="kicker rv">Phần 11 · Chiến lược nội dung</div>
-  <h2 class="rv d1">Một bản thu — <em>bảy tài sản số</em></h2>
-  <svg class="rv d2" viewBox="0 0 700 300" role="img" aria-label="Một master audio sinh ra bảy tài sản" style="width:100%;height:auto;margin-top:14px">
+  <h2 class="rv d1">Một bản thu · <em>bảy tài sản số</em></h2>
+  <svg class="rv d2 svg-only" viewBox="0 0 700 300" role="img" aria-label="Một master audio sinh ra bảy tài sản" style="width:100%;height:auto;margin-top:14px">
     <defs><style>.mrect{fill:#a3762f}.arect{fill:#fdf9f1;stroke:rgba(42,32,22,.18)}.at{font-size:12px;fill:#2a2016;font-family:'Be Vietnam Pro',sans-serif}.fan{stroke:#c49a55;stroke-width:1.2;fill:none}</style></defs>
     <rect class="mrect" x="30" y="115" rx="14" width="150" height="70"/>
     <text x="105" y="145" text-anchor="middle" font-size="14" fill="#fdf9f1" font-weight="500" font-family="'Be Vietnam Pro',sans-serif">1 Master Audio</text>
@@ -565,22 +607,35 @@ tr.total td{background:#f2ead9;font-weight:500}
       <path class="fan" d="M180 150 C 260 150, 260 262, 330 262"/>
     </g>
     <g>
-      <rect class="arect" x="330" y="20" rx="10" width="330" height="28"/><text class="at" x="345" y="39">App — bản full trong thư viện</text>
-      <rect class="arect" x="330" y="58" rx="10" width="330" height="28"/><text class="at" x="345" y="77">YouTube — video dài (30/60/120 phút)</text>
-      <rect class="arect" x="330" y="96" rx="10" width="330" height="28"/><text class="at" x="345" y="115">YouTube — bản nghe thử</text>
+      <rect class="arect" x="330" y="20" rx="10" width="330" height="28"/><text class="at" x="345" y="39">App · bản full trong thư viện</text>
+      <rect class="arect" x="330" y="58" rx="10" width="330" height="28"/><text class="at" x="345" y="77">YouTube · video dài (30/60/120 phút)</text>
+      <rect class="arect" x="330" y="96" rx="10" width="330" height="28"/><text class="at" x="345" y="115">YouTube · bản nghe thử</text>
       <rect class="arect" x="330" y="134" rx="10" width="330" height="28"/><text class="at" x="345" y="153">Short 30–60 giây</text>
       <rect class="arect" x="330" y="172" rx="10" width="330" height="28"/><text class="at" x="345" y="191">Clip mạng xã hội (TikTok / Reels)</text>
-      <rect class="arect" x="330" y="210" rx="10" width="330" height="28"/><text class="at" x="345" y="229">Artwork — hình đại diện</text>
-      <rect class="arect" x="330" y="248" rx="10" width="330" height="28"/><text class="at" x="345" y="267">Playlist — xếp vào bộ sưu tập</text>
+      <rect class="arect" x="330" y="210" rx="10" width="330" height="28"/><text class="at" x="345" y="229">Artwork · hình đại diện</text>
+      <rect class="arect" x="330" y="248" rx="10" width="330" height="28"/><text class="at" x="345" y="267">Playlist · xếp vào bộ sưu tập</text>
     </g>
   </svg>
-  <div class="quotebox rv d3">Mục tiêu năm đầu: 200 Master Audio → hơn 500 tài sản số phủ khắp app, YouTube và mạng xã hội.</div>
+  <div class="fan-m mob-only rv d2">
+    <div class="fan-src">1 Master Audio<span>thu &amp; mix một lần</span></div>
+    <div class="fan-arrow">↓</div>
+    <ul class="fan-list">
+      <li><i>1</i>App · bản full trong thư viện</li>
+      <li><i>2</i>YouTube · video dài (30/60/120 phút)</li>
+      <li><i>3</i>YouTube · bản nghe thử</li>
+      <li><i>4</i>Short 30–60 giây</li>
+      <li><i>5</i>Clip mạng xã hội (TikTok / Reels)</li>
+      <li><i>6</i>Artwork · hình đại diện</li>
+      <li><i>7</i>Playlist · xếp vào bộ sưu tập</li>
+    </ul>
+  </div>
+  <div class="quotebox rv d3">Mục tiêu năm đầu: 200 Master Audio → hơn 500 tài sản số phủ khắp app, YouTube và mạng xã hội. Bảy dạng ở trên là mức tối đa mỗi bản thu có thể xuất ra, không phải mọi bản thu đều xuất đủ bảy.</div>
 </section>
 
 <!-- 13. ROADMAP QUÝ + NOISE (gộp) -->
 <section class="slide">
   <div class="kicker rv">Phần 12 · Nhịp sản xuất 12 tháng</div>
-  <h2 class="rv d1">Kho lớn dần theo quý — <em>Noise đi trước</em></h2>
+  <h2 class="rv d1">Kho lớn dần theo quý · <em>Noise đi trước</em></h2>
   <div class="two">
     <div class="rv d2">
       <table style="margin-top:0">
@@ -591,16 +646,16 @@ tr.total td{background:#f2ead9;font-weight:500}
         <tr><td><b>Q4</b></td><td class="c">7</td><td class="c">10</td><td class="c">13</td><td class="c">6</td><td class="c"><b>36</b></td></tr>
         <tr class="total"><td>Năm 1</td><td class="c">40</td><td class="c">40</td><td class="c">40</td><td class="c">30</td><td class="c">150</td></tr>
       </table>
-      <p class="note">Chưa gồm nhóm <b>Instrument</b> và bản thu nghệ sĩ — bổ sung song song để chạm mốc 200. Sản xuất khởi động ngay tháng đầu: app đẹp mà kho rỗng là thất bại.</p>
+      <p class="note">Chưa gồm nhóm <b>Instrument</b> và bản thu nghệ sĩ, bổ sung song song để chạm mốc 200. Sản xuất khởi động ngay tháng đầu: app đẹp mà kho rỗng là thất bại.</p>
     </div>
     <div class="rv d3">
-      <h3 style="margin-top:0">Noise — 30 master, nhóm dễ nhất</h3>
+      <h3 style="margin-top:0">Noise · 30 master, nhóm dễ nhất</h3>
       <div>
         <span class="tag">White Noise</span><span class="tag">Pink</span><span class="tag">Brown</span><span class="tag">Mưa</span><span class="tag">Quạt</span><span class="tag">Máy lạnh</span><span class="tag">Nước</span><span class="tag">Rừng</span><span class="tag">Biển</span><span class="tag">Ngủ sâu</span>
       </div>
       <div class="num-list" style="margin-top:14px">
-        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi master xuất 3 độ dài</b><p>30 / 60 / 120 phút — một bản thu, ba video.</p></div></div>
-        <div class="num-item"><div class="n">·</div><div class="bd"><b>Hình ảnh: một artwork lặp</b><p>chi phí gần bằng không, kéo lượt nghe rất cao — đúng phân khúc app nhạc ngủ 1,66 tỷ USD.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi master xuất 3 độ dài</b><p>30 / 60 / 120 phút · một bản thu, ba video.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Hình ảnh: một artwork lặp</b><p>chi phí gần bằng không, kéo lượt nghe rất cao, đúng phân khúc app nhạc ngủ 1,66 tỷ USD.</p></div></div>
       </div>
     </div>
   </div>
@@ -611,25 +666,25 @@ tr.total td{background:#f2ead9;font-weight:500}
   <div class="kicker rv">Phần 13 · Sản xuất khôn ngoan</div>
   <h2 class="rv d1">Công thức sản xuất <em>70 / 20 / 10</em></h2>
   <div class="bar-row rv d2">
-    <div class="bar-item"><div class="lb"><b>70% — Tự làm trong nhà / công cụ AI</b><span>Sound · Noise · Meditation đơn giản · Visual</span></div><div class="tr"><div class="fl" style="width:70%"></div></div></div>
-    <div class="bar-item"><div class="lb"><b>20% — Bán chuyên nghiệp</b><span>Instrument · Music · Meditation có người dẫn</span></div><div class="tr"><div class="fl" style="width:20%"></div></div></div>
-    <div class="bar-item"><div class="lb"><b>10% — Sản xuất chuyên nghiệp</b><span>Nghệ sĩ · Mantra · Session đặc biệt · Band thu live</span></div><div class="tr"><div class="fl" style="width:10%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>70% · Tự làm trong nhà / công cụ AI</b><span>Sound · Noise · Meditation đơn giản · Visual</span></div><div class="tr"><div class="fl" style="width:70%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>20% · Bán chuyên nghiệp</b><span>Instrument · Music · Meditation có người dẫn</span></div><div class="tr"><div class="fl" style="width:20%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>10% · Sản xuất chuyên nghiệp</b><span>Nghệ sĩ · Mantra · Session đặc biệt · Band thu live</span></div><div class="tr"><div class="fl" style="width:10%"></div></div></div>
   </div>
-  <div class="quotebox rv d3">Phần đông kho làm nhanh trong nhà. Nguồn lực lớn chỉ dồn cho 10% đỉnh — bản thu nghệ sĩ tạo khác biệt không ai sao chép được.</div>
+  <div class="quotebox rv d3">Phần đông kho làm nhanh trong nhà. Nguồn lực lớn chỉ dồn cho 10% đỉnh · bản thu nghệ sĩ tạo khác biệt không ai sao chép được.</div>
   <p class="note rv d4">Hàng rào cạnh tranh: app quốc tế không có chuông thật, không gian thật và nghệ sĩ mantra Việt. Mảng mantra tiếng Việt hiện chưa ai chiếm lĩnh.</p>
 </section>
 
 <!-- 15. HỘI VIÊN + VẬN HÀNH (gộp) -->
 <section class="slide">
   <div class="kicker rv">Phần 14 · Doanh thu đều &amp; vận hành nhẹ</div>
-  <h2 class="rv d1">Máy chạy tiền phía trước — <em>mắt thần phía sau</em></h2>
+  <h2 class="rv d1">Máy chạy tiền phía trước · <em>mắt thần phía sau</em></h2>
   <div class="cards">
-    <div class="cardx rv d1"><div class="t">Hội viên tự vận hành</div><p>Đăng ký online, kích hoạt tức thì, quyền lợi tự trừ, nhắc gia hạn trước 7 ngày — hết cảnh dò sổ.</p></div>
-    <div class="cardx rv d2"><div class="t">Lịch không bao giờ trùng</div><p>Hệ thống biết phòng trống, therapist rảnh — hai khách không thể đặt cùng một chỗ, kể cả bấm cùng giây.</p></div>
-    <div class="cardx rv d3"><div class="t">Giới thiệu có thưởng</div><p>Mỗi hội viên một mã riêng — cả hai nhận thưởng, Samten biết chính xác ai mang khách về.</p></div>
-    <div class="cardx rv d4"><div class="t">Hồ sơ khách 360°</div><p>Gõ tên hoặc SĐT — thấy toàn bộ: học gì, gói nào, chi bao nhiêu. Kiosk điểm danh ghi thẳng vào đây.</p></div>
-    <div class="cardx rv d4"><div class="t">Dashboard buổi sáng</div><p>Doanh thu hôm qua, khách hôm nay, hội viên sắp hết hạn, lớp trống chỗ — 30 giây nắm hết.</p></div>
-    <div class="cardx rv d5"><div class="t">Dữ liệu nhạy cảm được bảo vệ</div><p>Ghi chú trị liệu chỉ therapist phụ trách xem được — theo quy định bảo vệ dữ liệu cá nhân VN từ ngày đầu.</p></div>
+    <div class="cardx rv d1"><div class="t">Hội viên tự vận hành</div><p>Đăng ký online, kích hoạt tức thì, quyền lợi tự trừ, nhắc gia hạn trước 7 ngày · hết cảnh dò sổ.</p></div>
+    <div class="cardx rv d2"><div class="t">Lịch không bao giờ trùng</div><p>Hệ thống biết phòng trống, therapist rảnh · hai khách không thể đặt cùng một chỗ, kể cả bấm cùng giây.</p></div>
+    <div class="cardx rv d3"><div class="t">Giới thiệu có thưởng</div><p>Mỗi hội viên một mã riêng · cả hai nhận thưởng, Samten biết chính xác ai mang khách về.</p></div>
+    <div class="cardx rv d4"><div class="t">Hồ sơ khách 360°</div><p>Gõ tên hoặc SĐT · thấy toàn bộ: học gì, gói nào, chi bao nhiêu. Kiosk điểm danh ghi thẳng vào đây.</p></div>
+    <div class="cardx rv d4"><div class="t">Dashboard buổi sáng</div><p>Doanh thu hôm qua, khách hôm nay, hội viên sắp hết hạn, lớp trống chỗ · 30 giây nắm hết.</p></div>
+    <div class="cardx rv d5"><div class="t">Dữ liệu nhạy cảm được bảo vệ</div><p>Ghi chú trị liệu chỉ therapist phụ trách xem được, theo quy định bảo vệ dữ liệu cá nhân VN từ ngày đầu.</p></div>
   </div>
 </section>
 
@@ -644,8 +699,8 @@ tr.total td{background:#f2ead9;font-weight:500}
     <div class="tl rv d4"><div class="m">Tháng 4</div><div class="t">Khai trương</div><p>Kiosk · khu thành viên · dashboard · referral · lên sóng</p></div>
   </div>
   <div class="num-list rv d5" style="margin-top:16px">
-    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Cuối mỗi tháng có bản chạy được để Samten bấm thử</b><p>— nghiệm thu xong mới sang giai đoạn kế.</p></div></div>
-    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Sản xuất nội dung song song từ tuần đầu</b><p>— ngày khai trương là ngày kho đã có bản thu thật.</p></div></div>
+    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Cuối mỗi tháng có bản chạy được để Samten bấm thử</b><p>Nghiệm thu xong mới sang giai đoạn kế.</p></div></div>
+    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Sản xuất nội dung song song từ tuần đầu</b><p>Ngày khai trương là ngày kho đã có bản thu thật.</p></div></div>
   </div>
   <p class="note rv d5">Khối lượng chi tiết từng hạng mục và ngân sách tương ứng: file Excel đính kèm.</p>
 </section>
@@ -659,14 +714,14 @@ tr.total td{background:#f2ead9;font-weight:500}
     <div class="num-list">
       <div class="num-item rv d2"><div class="n" style="color:var(--brass-soft)">1</div><div class="bd"><b style="color:var(--cream)">Workshop khởi động (nửa ngày).</b><p style="color:#a99cb8">Chốt phạm vi cùng nhau: mục tiêu số một, cơ cấu doanh thu, gói hội viên, cách ghi nhận dữ liệu trị liệu.</p></div></div>
       <div class="num-item rv d3"><div class="n" style="color:var(--brass-soft)">2</div><div class="bd"><b style="color:var(--cream)">Duyệt sitemap &amp; bộ thiết kế màn hình.</b><p style="color:#a99cb8">Thống nhất "cái gì nằm ở đâu" trên 62 màn hình trước khi viết code.</p></div></div>
-      <div class="num-item rv d4"><div class="n" style="color:var(--brass-soft)">3</div><div class="bd"><b style="color:var(--cream)">Khởi động sản xuất 10 master đầu tiên.</b><p style="color:#a99cb8">Sound + Noise theo công thức 70% tự làm — ngày khai trương là có nội dung thật.</p></div></div>
+      <div class="num-item rv d4"><div class="n" style="color:var(--brass-soft)">3</div><div class="bd"><b style="color:var(--cream)">Khởi động sản xuất 10 master đầu tiên.</b><p style="color:#a99cb8">Sound + Noise theo công thức 70% tự làm · ngày khai trương là có nội dung thật.</p></div></div>
     </div>
     <div class="footer-contact">
-      <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Không gian</div>Samten Space — Lầu G</div>
+      <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Không gian</div>Samten Space · Lầu G</div>
       <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Hotline</div>0918 939 980</div>
       <div class="contact-card rv d5" style="color:var(--cream)"><div class="k">Facebook</div>facebook.com/samten.vn</div>
     </div>
-    <p class="note rv d5">Samten Sound &amp; Music Therapy — không liên quan khu du lịch Samten Hills Đà Lạt · Kèm: bản chạy thật samten-web.vercel.app · bảng khối lượng &amp; ngân sách (Excel) · đặc tả kỹ thuật</p>
+    <p class="note rv d5">Samten Sound &amp; Music Therapy, không liên quan khu du lịch Samten Hills Đà Lạt · Kèm: bản chạy thật samten-web.vercel.app · bảng khối lượng &amp; ngân sách (Excel) · đặc tả kỹ thuật</p>
   </div>
 </section>
 
@@ -688,16 +743,21 @@ const slides = Array.from(document.querySelectorAll(".slide"));
 document.getElementById("tot").textContent = slides.length;
 let cur = 0;
 
-/* đếm trang */
-const io = new IntersectionObserver((ents) => {
-  ents.forEach(e => {
-    if (e.isIntersecting){
-      cur = slides.indexOf(e.target);
-      document.getElementById("cur").textContent = cur + 1;
-    }
-  });
-}, { root: deck, threshold: 0.5 });
-slides.forEach(s => io.observe(s));
+/* đếm trang · tính theo tâm khung, KHÔNG dùng IntersectionObserver ngưỡng 0,5.
+   Lý do: slide 10 cao 1782px trên khung 812px, tỉ lệ giao lớn nhất nó đạt được
+   chỉ là 812/1782 = 0,456 nên không bao giờ chạm ngưỡng 0,5 · callback không
+   chạy, bộ đếm đứng ở "9" suốt 2,2 màn của slide đó rồi nhảy thẳng sang 11.
+   Cách này đúng với slide cao bất kỳ: slide nào chứa tâm khung thì slide đó
+   đang được xem. */
+const curEl = document.getElementById("cur");
+function updateCur(){
+  const mid = deck.getBoundingClientRect().top + deck.clientHeight / 2;
+  let i = 0;
+  for (let k = 0; k < slides.length; k++){
+    if (slides[k].getBoundingClientRect().top <= mid) i = k; else break;
+  }
+  if (i !== cur){ cur = i; curEl.textContent = i + 1; }
+}
 
 /* hiệu ứng hiện dần như welcome page */
 const rvIO = new IntersectionObserver((ents) => {
@@ -735,10 +795,17 @@ document.querySelectorAll(".rv").forEach(el => rvIO.observe(el));
   requestAnimationFrame(draw);
 })();
 
+let ticking = false;
 deck.addEventListener("scroll", () => {
   const p = deck.scrollTop / (deck.scrollHeight - deck.clientHeight);
   document.getElementById("bar").style.width = (p * 100).toFixed(2) + "%";
+  if (!ticking){
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; updateCur(); });
+  }
 }, { passive: true });
+updateCur();
+addEventListener("resize", updateCur);
 
 function go(i){
   const t = Math.max(0, Math.min(slides.length - 1, i));
