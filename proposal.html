@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samten — Hệ Sinh Thái Số · Đề Xuất Dự Án</title>
+<meta name="description" content="Đề xuất hệ sinh thái số Samten Sound & Music Therapy: thị trường, kiến trúc, sitemap, sản phẩm thật, chiến lược nội dung.">
+<meta name="theme-color" content="#1c0d23">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#f7f1e6; --card:#fdf9f1; --ink:#2a2016; --muted:#8a7b64;
+  --brass:#a3762f; --brass-soft:#c49a55; --line:rgba(42,32,22,.14);
+  --night:#1c0d23; --night2:#2a1836; --cream:#f4ecdf; --plum-line:rgba(244,236,223,.13);
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+*{scrollbar-width:none}
+*::-webkit-scrollbar{display:none}
+html,body{overflow-x:hidden}
+body{background:var(--paper);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-weight:300;font-size:15.5px;line-height:1.62}
+.serif{font-family:"Cormorant Garamond",serif}
+img{display:block;width:100%;height:100%;object-fit:cover}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:var(--brass)}
+
+main{height:100dvh;overflow-y:auto;scroll-snap-type:y proximity}
+.slide{
+  min-height:100dvh;scroll-snap-align:start;position:relative;
+  display:flex;flex-direction:column;justify-content:center;
+  max-width:920px;margin:0 auto;padding:66px 24px 92px;
+}
+.kicker{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:12px}
+h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(30px,6.4vw,50px);line-height:1.12}
+h1 em,h2 em{font-style:italic;color:var(--brass)}
+h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(23px,4.6vw,34px);line-height:1.16;margin-bottom:6px}
+h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:19px;margin:16px 0 4px}
+h3 em{font-style:italic;color:var(--brass)}
+.lead{color:var(--muted);font-size:14px;margin-top:8px;max-width:58ch}
+.note{color:var(--muted);font-size:12px;margin-top:14px;padding-top:10px;border-top:1px solid var(--line)}
+.src{color:#a3957c;font-size:10px;margin-top:12px}
+
+/* hiệu ứng hiện dần — như welcome page bản chạy thật */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease, transform .9s ease}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}.rv.d5{transition-delay:.6s}
+@keyframes breathe{0%,100%{opacity:.45}50%{opacity:1}}
+.breathe{animation:breathe 4.2s ease-in-out infinite}
+@keyframes glowdot{0%,100%{box-shadow:0 0 14px 4px rgba(226,186,124,.5)}50%{box-shadow:0 0 30px 12px rgba(226,186,124,.85)}}
+.gdot{width:9px;height:9px;border-radius:50%;background:#eed4a6;display:inline-block;animation:glowdot 3.4s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.breathe,.gdot{animation:none}}
+
+#bar{position:fixed;top:0;left:0;height:3px;width:0%;background:var(--brass);z-index:50;transition:width .2s ease}
+.pager{
+  position:fixed;bottom:0;left:0;right:0;z-index:49;display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));
+  background:linear-gradient(to top, rgba(247,241,230,.95) 60%, transparent);
+  max-width:920px;margin:0 auto;
+}
+.pager .brand{font-family:"Cormorant Garamond",serif;font-size:14px;letter-spacing:.3em;text-transform:uppercase}
+.pager .brand span{color:var(--brass)}
+.pager .ctr{font-size:11px;letter-spacing:.16em;color:var(--muted)}
+.pager .btns{display:flex;gap:8px}
+.pager .btns button{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;background:var(--card)}
+.pager .btns svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+
+.photo{border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;margin-top:18px}
+@media(max-width:680px){.two{grid-template-columns:1fr}}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:18px}
+@media(max-width:560px){.cards{grid-template-columns:1fr}}
+.cardx{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:13px 15px}
+.cardx .t{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:17.5px;color:var(--brass)}
+.cardx p{font-size:12.5px;margin-top:4px}
+.num-list{margin-top:16px;display:flex;flex-direction:column;gap:11px}
+.num-item{display:flex;gap:13px;align-items:flex-start}
+.num-item .n{font-family:"Cormorant Garamond",serif;font-size:23px;color:var(--brass);font-weight:500;flex:0 0 26px;line-height:1.1}
+.num-item b{font-weight:500}
+.num-item p{font-size:13.5px;color:var(--muted)}
+.num-item .bd b + p{margin-top:1px}
+table{border-collapse:collapse;width:100%;margin-top:14px;font-size:13px;background:var(--card);border-radius:13px;overflow:hidden}
+th{background:#efe6d3;text-align:left;padding:9px 11px;font-weight:500;font-size:11.5px;letter-spacing:.04em}
+td{padding:8px 11px;border-top:1px solid var(--line)}
+td.c,th.c{text-align:center}
+tr.total td{background:#f2ead9;font-weight:500}
+.tag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--muted);margin:4px 4px 0 0;background:var(--card)}
+.big-stat{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px 15px;flex:1;min-width:140px}
+.stat .v{font-family:"Cormorant Garamond",serif;font-size:clamp(26px,5vw,38px);font-weight:500;color:var(--brass);line-height:1.05}
+.stat .k{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.45}
+.quotebox{margin-top:16px;padding:14px 17px;border-left:3px solid var(--brass);background:var(--card);border-radius:0 13px 13px 0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;line-height:1.5}
+
+.growth{margin-top:16px;display:flex;flex-direction:column;gap:13px}
+.g-item .lb{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;margin-bottom:5px;gap:10px}
+.g-item .lb b{font-weight:500;font-size:13px}
+.g-item .lb span{color:var(--muted);font-size:10.5px;text-align:right}
+.g-pair{display:flex;flex-direction:column;gap:3px}
+.g-bar{height:14px;border-radius:8px;display:flex;align-items:center;font-size:9.5px;padding-left:8px;letter-spacing:.03em;white-space:nowrap}
+.g-bar.now{background:#d8cbaf;color:var(--ink)}
+.g-bar.fut{background:linear-gradient(90deg,var(--brass),var(--brass-soft));color:#fff}
+
+.bar-row{margin-top:16px;display:flex;flex-direction:column;gap:12px}
+.bar-item .lb{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;gap:10px}
+.bar-item .lb b{font-weight:500}
+.bar-item .lb span{color:var(--muted);text-align:right}
+.bar-item .tr{height:11px;border-radius:8px;background:#eee4cf;overflow:hidden}
+.bar-item .fl{height:100%;border-radius:8px;background:linear-gradient(90deg,var(--brass),var(--brass-soft))}
+
+.journey-steps{display:flex;flex-direction:column;margin-top:14px}
+.jstep{display:flex;gap:13px}
+.jstep .dotcol{display:flex;flex-direction:column;align-items:center;flex:0 0 14px}
+.jstep .dot{width:9px;height:9px;border-radius:50%;background:var(--brass);flex:0 0 auto;margin-top:6px}
+.jstep .linev{width:1.5px;flex:1;background:var(--line);min-height:12px}
+.jstep .bd{padding-bottom:11px}
+.jstep b{font-weight:500;font-size:14px}
+.jstep p{font-size:12.5px;color:var(--muted)}
+
+.layers{margin-top:16px;display:flex;flex-direction:column}
+.layer{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:9px 13px}
+.layer .lt{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);font-weight:500;margin-bottom:6px}
+.layer .chips{display:flex;flex-wrap:wrap;gap:5px}
+.layer .chip{font-size:11.5px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+.layer.core{background:var(--brass);border-color:var(--brass)}
+.layer.core .lt{color:#f0ddba}
+.layer.core .chip{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25);color:#fdf9f1}
+.l-arrow{align-self:center;color:var(--brass);font-size:14px;line-height:1;padding:2px 0}
+
+.smap{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px}
+@media(max-width:680px){.smap{grid-template-columns:1fr}}
+.sm-col{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px 14px}
+.sm-col .h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:8px}
+.sm-col .h b{font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:500;font-size:17px;color:var(--brass)}
+.sm-col .h span{font-size:10px;color:var(--muted);letter-spacing:.08em}
+.sm-col ul{list-style:none}
+.sm-col li{font-size:12px;padding:3px 0 3px 13px;position:relative}
+.sm-col li::before{content:"";position:absolute;left:0;top:10px;width:7px;height:1.5px;background:var(--brass-soft)}
+.sm-col li small{color:var(--muted)}
+
+/* ====== HÌNH SẢN PHẨM THẬT (mockup hi-fi đúng giao diện đang chạy) ====== */
+.slide.dark{max-width:none;background:var(--night);color:var(--cream)}
+.slide.dark .inner{max-width:920px;margin:0 auto;width:100%;position:relative;z-index:1}
+.slide.dark .kicker{color:var(--brass-soft)}
+.slide.dark .lead,.slide.dark .note{color:#a99cb8}
+.slide.dark .note{border-color:var(--plum-line)}
+.cover-photo{position:absolute;inset:0;z-index:0;opacity:.32}
+.cover-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, var(--night) 8%, rgba(28,13,35,.5))}
+#coverFx{position:absolute;inset:0;z-index:0;pointer-events:none}
+
+.shots{display:flex;gap:16px;justify-content:center;align-items:flex-start;flex-wrap:wrap;margin-top:22px}
+.mk-browser{
+  flex:1 1 100%;max-width:560px;border-radius:14px;overflow:hidden;
+  border:1px solid var(--plum-line);background:#12081a;box-shadow:0 18px 50px rgba(0,0,0,.5);
+}
+.mk-browser .chrome{display:flex;gap:5px;align-items:center;background:#241332;padding:8px 12px}
+.mk-browser .chrome i{width:8px;height:8px;border-radius:50%;background:#3d2a4e;display:block}
+.mk-browser .chrome .url{flex:1;font-size:9.5px;letter-spacing:.05em;color:#8f81a0;background:#170c20;border-radius:7px;padding:4px 10px;margin-left:6px}
+.mk-hero{position:relative;height:198px}
+.mk-hero img{filter:brightness(.55)}
+.mk-hero .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 26px;background:linear-gradient(100deg, rgba(18,8,26,.75), rgba(18,8,26,.15))}
+.mk-hero .wm{font-family:"Cormorant Garamond",serif;font-size:21px;letter-spacing:.32em;color:#f4ecdf}
+.mk-hero .wm b{color:#d2a566;font-weight:500}
+.mk-hero .tg{font-size:9px;letter-spacing:.24em;color:#c49a55;text-transform:uppercase;margin-top:3px}
+.mk-hero .h{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15.5px;color:#e9dfcf;margin-top:9px;max-width:34ch;line-height:1.4}
+.mk-hero .cta{margin-top:10px;align-self:flex-start;background:#d2a566;color:#241a10;font-size:9.5px;font-weight:500;letter-spacing:.06em;border-radius:99px;padding:7px 15px}
+.mk-cats{display:flex;gap:6px;padding:11px 12px;background:#170c20}
+.mk-cats .c{flex:1;position:relative;border-radius:9px;overflow:hidden;aspect-ratio:3/3.6}
+.mk-cats .c img{filter:brightness(.72)}
+.mk-cats .c span{
+  position:absolute;left:6px;right:4px;bottom:6px;font-size:7.5px;letter-spacing:.06em;color:#f4ecdf;
+  font-family:"Cormorant Garamond",serif;font-style:italic;font-size:10.5px;
+  text-shadow:0 1px 5px rgba(0,0,0,.7);
+}
+.mk-phone{
+  width:172px;border-radius:24px;border:1px solid var(--plum-line);
+  background:#1c0d23;padding:11px 11px 14px;box-shadow:0 18px 50px rgba(0,0,0,.5);
+  display:flex;flex-direction:column;gap:8px;
+}
+.mk-top{display:flex;justify-content:space-between;align-items:center}
+.mk-top .w{font-family:"Cormorant Garamond",serif;font-size:11px;letter-spacing:.28em;color:#f4ecdf}
+.mk-top .w b{color:#d2a566;font-weight:500}
+.mk-top .pill{font-size:6.5px;letter-spacing:.16em;color:#9d91aa;border:1px solid var(--plum-line);border-radius:99px;padding:2px 6px}
+.mk-kick{font-size:7px;letter-spacing:.26em;color:#c49a55;text-transform:uppercase}
+.mk-h{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:16.5px;color:#f4ecdf;line-height:1.15;margin-top:-3px}
+.mk-h em{font-style:italic;color:#e3c088}
+.mk-bowl{position:relative;width:112px;height:112px;align-self:center;margin-top:4px}
+.mk-bowl .ring{position:absolute;inset:-7px;border-radius:50%;border:1.5px dashed rgba(238,212,166,.35)}
+.mk-bowl .im{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:1px solid rgba(238,212,166,.3)}
+.mk-meter{height:2.5px;border-radius:3px;background:rgba(244,236,223,.14);margin-top:10px;overflow:hidden}
+.mk-meter i{display:block;height:100%;width:56%;background:linear-gradient(90deg,#d2a566,#eed4a6)}
+.mk-chips{display:flex;gap:5px;justify-content:center;margin-top:7px}
+.mk-chip{font-size:8.5px;color:#9d91aa;border:1px solid var(--plum-line);border-radius:99px;padding:4px 10px}
+.mk-chip.on{background:#d2a566;color:#241a10;border-color:#d2a566;font-weight:500}
+.mk-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.mk-card{position:relative;border-radius:10px;overflow:hidden;aspect-ratio:4/4.4;border:1px solid rgba(244,236,223,.08)}
+.mk-card img{filter:brightness(.78)}
+.mk-card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(12,6,18,.72), transparent 55%)}
+.mk-card span{position:absolute;left:7px;bottom:6px;z-index:1;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:10.5px;color:#f4ecdf}
+.mk-nav{display:flex;justify-content:space-around;margin-top:2px;padding-top:7px;border-top:1px solid var(--plum-line)}
+.mk-nav i{width:13px;height:13px;border-radius:4px;background:rgba(244,236,223,.16);display:block}
+.mk-nav i.on{background:#d2a566}
+.mk-art{position:relative;width:104px;height:104px;align-self:center;margin-top:2px}
+.mk-art .halo{position:absolute;inset:-16px;border-radius:50%;background:radial-gradient(circle, rgba(210,165,102,.22), transparent 70%)}
+.mk-art .im{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:1px solid rgba(238,212,166,.3)}
+.mk-np{text-align:center;margin-top:6px}
+.mk-np .c{font-size:7px;letter-spacing:.26em;color:#c49a55;text-transform:uppercase}
+.mk-np .n{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:14.5px;color:#f4ecdf;margin-top:2px}
+.mk-play{width:34px;height:34px;border-radius:50%;background:#d2a566;align-self:center;margin-top:7px;display:grid;place-items:center}
+.mk-play svg{width:11px;height:11px;fill:#241a10}
+.mk-timer{display:flex;gap:4px;justify-content:center;margin-top:8px}
+.shot-cap{text-align:center;font-size:10.5px;color:#a99cb8;margin-top:7px;letter-spacing:.04em}
+
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+@media(max-width:640px){.timeline{grid-template-columns:1fr 1fr}}
+.tl{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:12px 13px}
+.tl .m{font-size:9.5px;letter-spacing:.2em;color:var(--brass);text-transform:uppercase;font-weight:500}
+.tl .t{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:16.5px;margin:4px 0 4px}
+.tl p{font-size:11px;color:var(--muted);line-height:1.5}
+.footer-contact{display:flex;gap:11px;flex-wrap:wrap;margin-top:20px}
+.contact-card{border-radius:15px;padding:12px 16px;font-size:12.5px;background:#2a1836;border:1px solid var(--plum-line)}
+.contact-card .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a99cb8;margin-bottom:2px}
+
+@media print{
+  main{height:auto;overflow:visible}
+  .slide{min-height:auto;page-break-after:always;padding:34px 26px}
+  .pager,#bar{display:none}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<div id="bar"></div>
+
+<main id="deck">
+
+<!-- 1. BÌA — hiệu ứng welcome page thật -->
+<section class="slide dark">
+  <div class="cover-photo"><img alt="" src="https://images.pexels.com/photos/6252095/pexels-photo-6252095.jpeg?auto=compress&cs=tinysrgb&w=1200" onerror="this.style.display='none'"></div>
+  <canvas id="coverFx"></canvas>
+  <div class="inner">
+    <p class="breathe rv" style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:#cfc3ad">Trước khi bắt đầu… hãy thở một hơi thật chậm.</p>
+    <div class="kicker rv d1" style="margin-top:22px">Sound &amp; Music Therapy · Đề xuất dự án · 2026 &nbsp;<span class="gdot"></span></div>
+    <h1 class="rv d2">Hệ sinh thái số<br><em>Samten</em></h1>
+    <p class="lead rv d3">Một hệ thống duy nhất kết nối trung tâm trị liệu — website, ứng dụng chữa lành, kho thanh âm, câu lạc bộ hội viên và bộ máy vận hành.</p>
+    <p class="note rv d4">17 trang · Trượt xuống hoặc dùng phím mũi tên · Kèm bản chạy thật: <b style="color:#e3c088">samten-web.vercel.app</b> · bảng khối lượng &amp; ngân sách (Excel)</p>
+  </div>
+</section>
+
+<!-- 2. TRIẾT LÝ -->
+<section class="slide">
+  <div class="kicker rv">Phần 01 · Nền tảng</div>
+  <h2 class="rv d1">Samten là <em>Therapy</em> — khoa học, trung dung, có minh chứng</h2>
+  <div class="num-list">
+    <div class="num-item rv d1"><div class="n">a</div><div class="bd"><b>Vận hành như một Viện R&amp;D.</b><p>Mọi liệu pháp đều có nghiên cứu chuyên sâu và cơ sở minh chứng — không phải "healing" cảm tính.</p></div></div>
+    <div class="num-item rv d2"><div class="n">b</div><div class="bd"><b>Cân bằng Thân — Tâm — Trí — Năng lượng — Cảm xúc</b><p>qua liệu pháp âm thanh khoa học: nghiên cứu, đào tạo, câu lạc bộ, show đa giác quan.</p></div></div>
+    <div class="num-item rv d3"><div class="n">c</div><div class="bd"><b>Kích hoạt, không hứa hẹn.</b><p>Samten không "chữa" ai — Samten kích hoạt khả năng tự phục hồi vốn có, đưa năng lượng nội tại về trạng thái nguyên bản (Dhyāna).</p></div></div>
+    <div class="num-item rv d4"><div class="n">d</div><div class="bd"><b>Trung dung tuyệt đối.</b><p>Không tôn giáo, tôn trọng trải nghiệm cá nhân — hệ thống số không hứa "chữa bệnh", chỉ mở không gian để lắng.</p></div></div>
+  </div>
+</section>
+
+<!-- 3. THỊ TRƯỜNG (TG + VN gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 02 · Thị trường</div>
+  <h2 class="rv d1">Thế giới đang trả tiền để được lắng.<br>Việt Nam <em>gần như chưa có ai phục vụ</em></h2>
+  <div class="growth rv d2">
+    <div class="g-item">
+      <div class="lb"><b>Ứng dụng thiền &amp; mindfulness toàn cầu</b><span>CAGR 14,7%/năm</span></div>
+      <div class="g-pair"><div class="g-bar now" style="width:31%">2025 · 2,2 tỷ USD</div><div class="g-bar fut" style="width:100%">2033 · 6,99 tỷ USD</div></div>
+    </div>
+    <div class="g-item">
+      <div class="lb"><b>Sound healing (chuông, gong, tần số)</b><span>CAGR 9,5%/năm · APAC tăng nhanh nhất</span></div>
+      <div class="g-pair"><div class="g-bar now" style="width:37%">2024 · 3,2 tỷ USD</div><div class="g-bar fut" style="width:100%">2035 · 8,68 tỷ USD</div></div>
+    </div>
+  </div>
+  <div class="big-stat rv d3">
+    <div class="stat"><div class="v">15tr</div><div class="k">người Việt (14,9% dân số) có rối loạn tâm lý phổ biến — Bộ Y tế/WHO</div></div>
+    <div class="stat"><div class="v">0,3</div><div class="k">bác sĩ tâm thần/100.000 dân, so với 9,0 toàn cầu — 90% chưa được chăm sóc</div></div>
+    <div class="stat"><div class="v">1,98</div><div class="k">lần stress/tuần ở người Việt; nhu cầu app thiền &amp; thư giãn tăng nhanh nhất — Cimigo 2025</div></div>
+  </div>
+  <p class="note rv d4">Samten không thay thế y khoa — nhưng khoảng trống "được lắng mỗi ngày" ở Việt Nam khổng lồ, và chưa thương hiệu Việt nào chiếm lĩnh âm thanh trị liệu. Luật hiện hành còn yêu cầu doanh nghiệp &gt;50 nhân sự có chương trình đánh giá stress — cửa corporate wellness cho giai đoạn sau.</p>
+  <p class="src rv d4">Nguồn: Grand View Research 2026 · MetaTech Insights 2025 · Coherent MI 2026 · Ken Research 2026 (dẫn Bộ Y tế/WHO) · Cimigo 2025</p>
+</section>
+
+<!-- 4. VẤN ĐỀ + MỤC TIÊU (gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 03 · Từ điểm nghẽn đến đích 12 tháng</div>
+  <h2 class="rv d1">Hôm nay làm tay — <em>sang năm đo bằng số</em></h2>
+  <div class="two">
+    <div class="rv d2">
+      <h3 style="margin-top:0">Năm điểm nghẽn</h3>
+      <div class="num-list" style="margin-top:10px">
+        <div class="num-item"><div class="n">1</div><div class="bd"><b>Dữ liệu khách rời rạc</b><p>sổ tay, Zalo, Excel — không biết ai quý nhất.</p></div></div>
+        <div class="num-item"><div class="n">2</div><div class="bd"><b>Vận hành thủ công</b><p>xếp lịch, điểm danh, thu phí — đông khách là quá tải.</p></div></div>
+        <div class="num-item"><div class="n">3</div><div class="bd"><b>Kho âm thanh "ngủ"</b><p>track hay nhưng chưa thành sản phẩm.</p></div></div>
+        <div class="num-item"><div class="n">4</div><div class="bd"><b>Referral không đo được</b><p>kênh mạnh nhất lại không có mã, không có thưởng.</p></div></div>
+        <div class="num-item"><div class="n">5</div><div class="bd"><b>Mọi thứ qua hotline</b><p>khách trẻ quen tự đặt — bắt gọi điện là mất họ.</p></div></div>
+      </div>
+    </div>
+    <div class="rv d3">
+      <h3 style="margin-top:0">Mục tiêu 12 tháng</h3>
+      <table style="margin-top:10px">
+        <tr><th>Chỉ số</th><th class="c">Mốc</th></tr>
+        <tr><td>Đặt lịch qua hệ thống, không qua hotline</td><td class="c">≥ 60%</td></tr>
+        <tr><td>Khách trải nghiệm lần đầu → hội viên</td><td class="c">≥ 20%</td></tr>
+        <tr><td>Hội viên gia hạn Mantra Plus</td><td class="c">≥ 70%</td></tr>
+        <tr><td>Giờ công xếp lịch &amp; điểm danh</td><td class="c">−50%</td></tr>
+        <tr><td>Khách mới từ giới thiệu có mã</td><td class="c">≥ 25%</td></tr>
+        <tr><td>Lượt nghe thư viện mỗi tháng</td><td class="c">≥ 5.000</td></tr>
+      </table>
+      <p class="note">Đối chiếu: app nhạc ngủ quốc tế chuyển đổi trả phí ~11,8% (Dataintelo 2026). Mốc 20% khả thi vì khách của Samten đã trải nghiệm trực tiếp tại Space trước khi được mời.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 5. SƠ ĐỒ TỔNG THỂ -->
+<section class="slide">
+  <div class="kicker rv">Phần 04 · Sơ đồ tổng thể</div>
+  <h2 class="rv d1">Toàn cảnh hệ sinh thái — <em>từ lượt xem đến hội viên</em></h2>
+  <div class="layers">
+    <div class="layer rv d1"><div class="lt">Tầng 1 · Kênh tiếp cận</div><div class="chips"><span class="chip">TikTok / Facebook / IG</span><span class="chip">YouTube (kho nội dung)</span><span class="chip">Google</span><span class="chip">Bạn bè giới thiệu</span></div></div>
+    <div class="l-arrow rv d1">↓</div>
+    <div class="layer rv d2"><div class="lt">Tầng 2 · Điểm chạm số</div><div class="chips"><span class="chip">Website (VI/EN)</span><span class="chip">App chữa lành</span><span class="chip">Kiosk tại Samten Space</span></div></div>
+    <div class="l-arrow rv d2">↓</div>
+    <div class="layer rv d3"><div class="lt">Tầng 3 · Sản phẩm &amp; dịch vụ</div><div class="chips"><span class="chip">Đặt lịch trị liệu &amp; lớp</span><span class="chip">Mantra Plus Club</span><span class="chip">Academy A→B</span><span class="chip">Kho thanh âm 200 master</span><span class="chip">Sự kiện · Show</span></div></div>
+    <div class="l-arrow rv d3">↓</div>
+    <div class="layer rv d4"><div class="lt">Tầng 4 · Bộ máy vận hành</div><div class="chips"><span class="chip">Quản trị &amp; CRM</span><span class="chip">Thanh toán</span><span class="chip">Nhắc lịch</span><span class="chip">Điểm danh</span><span class="chip">Báo cáo</span></div></div>
+    <div class="l-arrow rv d4">↓</div>
+    <div class="layer core rv d5"><div class="lt">Nền móng</div><div class="chips"><span class="chip">Một hồ sơ khách duy nhất</span><span class="chip">Kho dữ liệu tập trung</span><span class="chip">Bảo vệ dữ liệu cá nhân theo luật VN</span></div></div>
+  </div>
+  <p class="note rv d5">Mỗi tầng nuôi tầng dưới: nội dung kéo người xem → điểm chạm biến người xem thành khách → sản phẩm biến khách thành hội viên → vận hành giữ chân — mọi tương tác chảy về một hồ sơ duy nhất.</p>
+</section>
+
+<!-- 6. HUB 6 NHÓM -->
+<section class="slide">
+  <div class="kicker rv">Phần 05 · Sáu nhóm sản phẩm</div>
+  <h2 class="rv d1">Sáu mảnh ghép, <em>một trái tim</em></h2>
+  <svg class="rv d2" viewBox="0 0 700 330" role="img" aria-label="Sơ đồ 6 nhóm sản phẩm quanh hồ sơ khách" style="width:100%;height:auto;margin-top:16px">
+    <defs><style>.hub{fill:#a3762f}.spoke{fill:#fdf9f1;stroke:rgba(42,32,22,.18)}.lbl{font-size:13px;fill:#2a2016;font-family:'Be Vietnam Pro',sans-serif}.lbl2{font-size:10px;fill:#8a7b64;font-family:'Be Vietnam Pro',sans-serif}.ln{stroke:#c49a55;stroke-width:1.3;stroke-dasharray:3 4;fill:none}</style></defs>
+    <line class="ln" x1="350" y1="165" x2="120" y2="60"/><line class="ln" x1="350" y1="165" x2="350" y2="52"/><line class="ln" x1="350" y1="165" x2="580" y2="60"/>
+    <line class="ln" x1="350" y1="165" x2="120" y2="272"/><line class="ln" x1="350" y1="165" x2="350" y2="282"/><line class="ln" x1="350" y1="165" x2="580" y2="272"/>
+    <circle class="hub" cx="350" cy="165" r="58"/>
+    <text x="350" y="160" text-anchor="middle" font-size="14" fill="#fdf9f1" font-weight="500" font-family="'Be Vietnam Pro',sans-serif">Hồ sơ khách</text>
+    <text x="350" y="178" text-anchor="middle" font-size="11" fill="#f0ddba" font-family="'Be Vietnam Pro',sans-serif">duy nhất</text>
+    <g><rect class="spoke" x="40" y="30" rx="14" width="160" height="58"/><text class="lbl" x="120" y="55" text-anchor="middle">Website</text><text class="lbl2" x="120" y="72" text-anchor="middle">Tìm thấy · tin tưởng</text></g>
+    <g><rect class="spoke" x="270" y="18" rx="14" width="160" height="58"/><text class="lbl" x="350" y="43" text-anchor="middle">App chữa lành</text><text class="lbl2" x="350" y="60" text-anchor="middle">Thực hành mỗi ngày</text></g>
+    <g><rect class="spoke" x="500" y="30" rx="14" width="160" height="58"/><text class="lbl" x="580" y="55" text-anchor="middle">Đặt lịch</text><text class="lbl2" x="580" y="72" text-anchor="middle">Lớp · trị liệu 1-1</text></g>
+    <g><rect class="spoke" x="40" y="243" rx="14" width="160" height="58"/><text class="lbl" x="120" y="268" text-anchor="middle">Mantra Plus Club</text><text class="lbl2" x="120" y="285" text-anchor="middle">Hội viên · giới thiệu</text></g>
+    <g><rect class="spoke" x="270" y="253" rx="14" width="160" height="58"/><text class="lbl" x="350" y="278" text-anchor="middle">Kho thanh âm</text><text class="lbl2" x="350" y="295" text-anchor="middle">200 master · 500+ tài sản</text></g>
+    <g><rect class="spoke" x="500" y="243" rx="14" width="160" height="58"/><text class="lbl" x="580" y="268" text-anchor="middle">Vận hành</text><text class="lbl2" x="580" y="285" text-anchor="middle">Kiosk · quản trị · báo cáo</text></g>
+  </svg>
+  <p class="note rv d3">Thứ tự xây: nền vận hành → website → đặt lịch → hội viên. Kho thanh âm và Academy lớn dần song song theo nhịp sản xuất nội dung.</p>
+</section>
+
+<!-- 7. NGƯỜI DÙNG + HÀNH TRÌNH (gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 06 · Người dùng &amp; hành trình</div>
+  <h2 class="rv d1">Bốn gương mặt — <em>một vòng lặp</em></h2>
+  <div class="two">
+    <div class="rv d2">
+      <div class="cards" style="grid-template-columns:1fr;margin-top:0">
+        <div class="cardx"><div class="t">Người tò mò</div><p>Thấy sound bath trên TikTok — cần hiểu Samten trong 30 giây, đặt buổi đầu trong 2 phút.</p></div>
+        <div class="cardx"><div class="t">Hội viên Mantra Plus</div><p>Đi đều mỗi tuần — cần xem lịch, giữ chỗ, quyền lợi còn lại, không phải nhắn hỏi lễ tân.</p></div>
+        <div class="cardx"><div class="t">Học viên A1 → B3</div><p>Cần lịch học, tài liệu, điểm danh trong một chỗ.</p></div>
+        <div class="cardx"><div class="t">Đội ngũ Samten</div><p>Cần bớt việc tay, nhìn toàn cảnh trong một màn hình.</p></div>
+      </div>
+    </div>
+    <div class="rv d3">
+      <h3 style="margin-top:0">Vòng lặp khách hàng</h3>
+      <div class="journey-steps">
+        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Biết đến</b><p>Video TikTok/YouTube → website, app nghe thử miễn phí.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Trải nghiệm đầu</b><p>Tự đặt sound bath trên điện thoại, thanh toán online, nhắc lịch tự động.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Đến Space</b><p>Kiosk nhận ra ngay — lễ tân được báo, khách lên thẳng Lầu G.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div><div class="linev"></div></div><div class="bd"><b>Thành hội viên</b><p>Ưu đãi sau buổi đầu; nghe app mỗi tối, quyền lợi tự trừ.</p></div></div>
+        <div class="jstep"><div class="dotcol"><div class="dot"></div></div><div class="bd"><b>Giới thiệu bạn</b><p>Mã riêng — cả hai nhận thưởng. Vòng lặp bắt đầu lại.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SITEMAP -->
+<section class="slide">
+  <div class="kicker rv">Phần 07 · Sitemap</div>
+  <h2 class="rv d1">Bốn khu vực của hệ thống</h2>
+  <div class="smap">
+    <div class="sm-col rv d1">
+      <div class="h"><b>Website công khai</b><span>32 trang</span></div>
+      <ul>
+        <li>Trang chủ · Về Samten · Đội ngũ · Không gian</li>
+        <li>Dịch vụ trị liệu <small>(danh sách + chi tiết)</small></li>
+        <li>Academy: lộ trình A→B · chi tiết khóa · lịch khai giảng</li>
+        <li>Mantra Plus: quyền lợi · các hạng</li>
+        <li>Kho thanh âm <small>(chủ đề · bộ sưu tập · track)</small></li>
+        <li>Đặt lịch 4 bước · Blog · Sự kiện · Liên hệ · FAQ</li>
+      </ul>
+    </div>
+    <div class="sm-col rv d2">
+      <div class="h"><b>Khu thành viên</b><span>20 màn hình</span></div>
+      <ul>
+        <li>Bảng điều khiển cá nhân · Hồ sơ</li>
+        <li>Lịch của tôi <small>(sắp tới · lịch sử · đổi/hủy)</small></li>
+        <li>Hội viên <small>(hạng · hạn · quyền lợi còn lại)</small></li>
+        <li>Khóa học · Tài liệu · Tiến độ</li>
+        <li>Thư viện · Playlist · Nghe tiếp</li>
+        <li>Giới thiệu bạn · Thưởng · Hóa đơn · Mã QR</li>
+      </ul>
+    </div>
+    <div class="sm-col rv d3">
+      <div class="h"><b>Kiosk tại Space</b><span>13 màn hình</span></div>
+      <ul>
+        <li>Màn chào · Nhận diện <small>(tên / SĐT / QR)</small></li>
+        <li>Luồng hội viên CLB <small>(kiểm tra hạn gói)</small></li>
+        <li>Luồng học viên <small>(chọn lớp · điểm danh)</small></li>
+        <li>Luồng lịch hẹn · Luồng khách lần đầu</li>
+        <li>Màn hàng đợi cho lễ tân</li>
+      </ul>
+    </div>
+    <div class="sm-col rv d4">
+      <div class="h"><b>Trang quản trị</b><span>40 màn hình</span></div>
+      <ul>
+        <li>Dashboard tổng · Báo cáo</li>
+        <li>Khách hàng: danh sách · hồ sơ 360° · phân nhóm</li>
+        <li>Hội viên: gói · gia hạn · sắp hết hạn</li>
+        <li>Lịch tổng · phòng · ca làm việc</li>
+        <li>Nội dung · Kho thanh âm · Giao dịch · Referral · Phân quyền</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 9. KHỐI LƯỢNG MÀN HÌNH -->
+<section class="slide">
+  <div class="kicker rv">Phần 08 · Khối lượng công việc</div>
+  <h2 class="rv d1">105 màn hình thiết kế — <em>62 cho bản đầu tiên</em></h2>
+  <table class="rv d2">
+    <tr><th>Khu vực</th><th class="c">Tổng</th><th class="c">Bản đầu (MVP)</th><th>Ví dụ tiêu biểu</th></tr>
+    <tr><td><b>Website công khai</b></td><td class="c">32</td><td class="c">24</td><td>Trang chủ, dịch vụ, khóa học, đặt lịch 4 bước</td></tr>
+    <tr><td><b>Khu thành viên</b></td><td class="c">20</td><td class="c">13</td><td>Dashboard, lịch, hội viên, QR, hóa đơn</td></tr>
+    <tr><td><b>Kiosk check-in</b></td><td class="c">13</td><td class="c">12</td><td>4 luồng khách, quét QR, hàng đợi lễ tân</td></tr>
+    <tr><td><b>Trang quản trị</b></td><td class="c">40</td><td class="c">13</td><td>Hồ sơ 360°, lịch tổng, giao dịch, dashboard</td></tr>
+    <tr class="total"><td>Tổng cộng</td><td class="c">105</td><td class="c">62</td><td>Danh mục đầy đủ trong file đặc tả đính kèm</td></tr>
+  </table>
+  <div class="bar-row rv d3">
+    <div class="bar-item"><div class="lb"><b>Bản đầu tiên (4 tháng)</b><span>62 màn hình — mọi luồng tạo doanh thu</span></div><div class="tr"><div class="fl" style="width:59%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>Giai đoạn 2</b><span>43 màn hình — Academy đầy đủ, thư viện thương mại, báo cáo sâu</span></div><div class="tr"><div class="fl" style="width:41%;opacity:.45"></div></div></div>
+  </div>
+  <p class="note rv d3">Đây là một hệ thống bốn ứng dụng nói chuyện với nhau — không phải "một cái website".</p>
+</section>
+
+<!-- 10. HÌNH SẢN PHẨM THẬT -->
+<section class="slide dark">
+  <div class="inner">
+    <div class="kicker rv">Phần 09 · Không phải bản vẽ — sản phẩm đã chạy</div>
+    <h2 class="rv d1" style="color:var(--cream)">Xem bằng mắt, <em>chạm bằng tay</em></h2>
+    <p class="lead rv d2">Giao diện thật của bản đang chạy tại <a href="https://samten-web.vercel.app" style="color:#e3c088">samten-web.vercel.app</a> — mở trên điện thoại là nghe được, chơi được.</p>
+    <div class="shots">
+      <div class="rv d2" style="flex:1 1 100%;max-width:560px">
+        <div class="mk-browser">
+          <div class="chrome"><i></i><i></i><i></i><div class="url">samten-web.vercel.app</div></div>
+          <div class="mk-hero">
+            <img alt="" src="https://images.pexels.com/photos/6252095/pexels-photo-6252095.jpeg?auto=compress&cs=tinysrgb&w=900" onerror="this.style.display='none'">
+            <div class="ov">
+              <div class="wm">SAM<b>TEN</b></div>
+              <div class="tg">Music &amp; Wellbeing Platform</div>
+              <div class="h">Chuông thật, phòng thật, và một thư viện thanh âm không bao giờ lặp lại.</div>
+              <div class="cta">Bước vào Samten</div>
+            </div>
+          </div>
+          <div class="mk-cats">
+            <div class="c"><img alt="" src="https://images.pexels.com/photos/3544322/pexels-photo-3544322.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Sound</span></div>
+            <div class="c"><img alt="" src="https://images.pexels.com/photos/6634430/pexels-photo-6634430.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Meditation</span></div>
+            <div class="c"><img alt="" src="https://images.pexels.com/photos/1516903/pexels-photo-1516903.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Music</span></div>
+            <div class="c"><img alt="" src="https://images.pexels.com/photos/3116422/pexels-photo-3116422.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Noise</span></div>
+            <div class="c"><img alt="" src="https://images.pexels.com/photos/31359311/pexels-photo-31359311.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Instrument</span></div>
+          </div>
+        </div>
+        <div class="shot-cap">Trang chào web — năm danh mục thanh âm</div>
+      </div>
+      <div class="rv d3">
+        <div class="mk-phone">
+          <div class="mk-top"><div class="w">SAM<b>TEN</b></div><div class="pill">DEMO</div></div>
+          <div class="mk-kick">Nhạc cụ trong tay bạn</div>
+          <div class="mk-h">Chuông <em>của bạn</em></div>
+          <div class="mk-bowl">
+            <div class="ring"></div>
+            <div class="im"><img alt="" src="https://images.pexels.com/photos/6997986/pexels-photo-6997986.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"></div>
+          </div>
+          <div class="mk-meter"><i></i></div>
+          <div class="mk-chips"><span class="mk-chip">Trầm</span><span class="mk-chip on">Vừa</span><span class="mk-chip">Cao</span></div>
+        </div>
+        <div class="shot-cap">Chuông tương tác</div>
+      </div>
+      <div class="rv d4">
+        <div class="mk-phone">
+          <div class="mk-top"><div class="w">SAM<b>TEN</b></div><div class="pill">DEMO</div></div>
+          <div class="mk-kick">Thư viện thanh âm</div>
+          <div class="mk-h">Năm <em>danh mục</em></div>
+          <div class="mk-grid">
+            <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/3544322/pexels-photo-3544322.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Âm chuông</span></div>
+            <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/6634430/pexels-photo-6634430.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Thiền</span></div>
+            <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/36203419/pexels-photo-36203419.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Thiên nhiên</span></div>
+            <div class="mk-card"><img alt="" src="https://images.pexels.com/photos/1516903/pexels-photo-1516903.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"><span>Nhạc thư giãn</span></div>
+          </div>
+          <div class="mk-nav"><i class="on"></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="shot-cap">Thư viện</div>
+      </div>
+      <div class="rv d5">
+        <div class="mk-phone">
+          <div class="mk-top"><div class="w">SAM<b>TEN</b></div><div class="pill">DEMO</div></div>
+          <div class="mk-kick" style="text-align:center">Đang phát</div>
+          <div class="mk-art">
+            <div class="halo"></div>
+            <div class="im"><img alt="" src="https://images.pexels.com/photos/3116422/pexels-photo-3116422.jpeg?auto=compress&cs=tinysrgb&w=300" onerror="this.style.display='none'"></div>
+          </div>
+          <div class="mk-np"><div class="c">Thiên nhiên</div><div class="n">Sóng vỗ</div></div>
+          <div class="mk-play"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></div>
+          <div class="mk-timer"><span class="mk-chip">5’</span><span class="mk-chip on">10’</span><span class="mk-chip">Tắt</span></div>
+        </div>
+        <div class="shot-cap">Trình phát · hẹn giờ ngủ</div>
+      </div>
+    </div>
+    <p class="note rv d5">Hành trình 3 phút, ngân cùng chuông, vẽ thanh âm, pha trộn, nhịp não Alpha/Theta — tất cả đang chạy trong bản demo. Đưa điện thoại cho khách và đeo tai nghe: ba phút đó thuyết phục hơn mọi trang chữ.</p>
+  </div>
+</section>
+
+<!-- 11. WEBSITE & APP (gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 10 · Hai điểm chạm chính</div>
+  <h2 class="rv d1">Website mở cửa — <em>app giữ nhịp mỗi ngày</em></h2>
+  <div class="two">
+    <div class="rv d2">
+      <h3 style="margin-top:0">Website — cửa chính</h3>
+      <div class="num-list" style="margin-top:10px">
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Kể đúng câu chuyện Therapy</b><p>song ngữ Việt/Anh, chuẩn tìm kiếm Google.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi dịch vụ là một trang bán hàng</b><p>ai phù hợp, giá, lịch khai giảng — nút đặt bên cạnh.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Đặt lịch 4 bước, thanh toán tại chỗ</b><p>nhắc tự động trước 24 giờ và 2 giờ.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Đội Samten tự đăng bài</b><p>quản trị nội dung như soạn văn bản.</p></div></div>
+      </div>
+    </div>
+    <div class="rv d3">
+      <h3 style="margin-top:0">App — Samten trong túi áo</h3>
+      <div class="num-list" style="margin-top:10px">
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Nghe mỗi tối, nhớ mỗi ngày</b><p>thư viện 5 danh mục, hẹn giờ ngủ, chế độ chìm đắm.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Nhạc cụ tương tác</b><p>gõ chuông, xoa vành, ngân giọng, vẽ thanh âm — không app quốc tế nào có.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Cầu nối về Space</b><p>nghe 3 phút trên app → đặt buổi 60 phút thật.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Web-app trước, native sau</b><p>dùng ngay không cần tải; app cài đặt khi kho nội dung đủ dày.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. 1 MASTER → 7 -->
+<section class="slide">
+  <div class="kicker rv">Phần 11 · Chiến lược nội dung</div>
+  <h2 class="rv d1">Một bản thu — <em>bảy tài sản số</em></h2>
+  <svg class="rv d2" viewBox="0 0 700 300" role="img" aria-label="Một master audio sinh ra bảy tài sản" style="width:100%;height:auto;margin-top:14px">
+    <defs><style>.mrect{fill:#a3762f}.arect{fill:#fdf9f1;stroke:rgba(42,32,22,.18)}.at{font-size:12px;fill:#2a2016;font-family:'Be Vietnam Pro',sans-serif}.fan{stroke:#c49a55;stroke-width:1.2;fill:none}</style></defs>
+    <rect class="mrect" x="30" y="115" rx="14" width="150" height="70"/>
+    <text x="105" y="145" text-anchor="middle" font-size="14" fill="#fdf9f1" font-weight="500" font-family="'Be Vietnam Pro',sans-serif">1 Master Audio</text>
+    <text x="105" y="164" text-anchor="middle" font-size="10.5" fill="#f0ddba" font-family="'Be Vietnam Pro',sans-serif">thu &amp; mix một lần</text>
+    <g>
+      <path class="fan" d="M180 150 C 260 150, 260 34, 330 34"/><path class="fan" d="M180 150 C 260 150, 260 72, 330 72"/>
+      <path class="fan" d="M180 150 C 260 150, 260 110, 330 110"/><path class="fan" d="M180 150 C 260 150, 260 148, 330 148"/>
+      <path class="fan" d="M180 150 C 260 150, 260 186, 330 186"/><path class="fan" d="M180 150 C 260 150, 260 224, 330 224"/>
+      <path class="fan" d="M180 150 C 260 150, 260 262, 330 262"/>
+    </g>
+    <g>
+      <rect class="arect" x="330" y="20" rx="10" width="330" height="28"/><text class="at" x="345" y="39">App — bản full trong thư viện</text>
+      <rect class="arect" x="330" y="58" rx="10" width="330" height="28"/><text class="at" x="345" y="77">YouTube — video dài (30/60/120 phút)</text>
+      <rect class="arect" x="330" y="96" rx="10" width="330" height="28"/><text class="at" x="345" y="115">YouTube — bản nghe thử</text>
+      <rect class="arect" x="330" y="134" rx="10" width="330" height="28"/><text class="at" x="345" y="153">Short 30–60 giây</text>
+      <rect class="arect" x="330" y="172" rx="10" width="330" height="28"/><text class="at" x="345" y="191">Clip mạng xã hội (TikTok / Reels)</text>
+      <rect class="arect" x="330" y="210" rx="10" width="330" height="28"/><text class="at" x="345" y="229">Artwork — hình đại diện</text>
+      <rect class="arect" x="330" y="248" rx="10" width="330" height="28"/><text class="at" x="345" y="267">Playlist — xếp vào bộ sưu tập</text>
+    </g>
+  </svg>
+  <div class="quotebox rv d3">Mục tiêu năm đầu: 200 Master Audio → hơn 500 tài sản số phủ khắp app, YouTube và mạng xã hội.</div>
+</section>
+
+<!-- 13. ROADMAP QUÝ + NOISE (gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 12 · Nhịp sản xuất 12 tháng</div>
+  <h2 class="rv d1">Kho lớn dần theo quý — <em>Noise đi trước</em></h2>
+  <div class="two">
+    <div class="rv d2">
+      <table style="margin-top:0">
+        <tr><th>Quý</th><th class="c">Sound</th><th class="c">Medi</th><th class="c">Music</th><th class="c">Noise</th><th class="c">Cộng</th></tr>
+        <tr><td><b>Q1</b></td><td class="c">15</td><td class="c">10</td><td class="c">5</td><td class="c">10</td><td class="c"><b>40</b></td></tr>
+        <tr><td><b>Q2</b></td><td class="c">10</td><td class="c">10</td><td class="c">10</td><td class="c">8</td><td class="c"><b>38</b></td></tr>
+        <tr><td><b>Q3</b></td><td class="c">8</td><td class="c">10</td><td class="c">12</td><td class="c">6</td><td class="c"><b>36</b></td></tr>
+        <tr><td><b>Q4</b></td><td class="c">7</td><td class="c">10</td><td class="c">13</td><td class="c">6</td><td class="c"><b>36</b></td></tr>
+        <tr class="total"><td>Năm 1</td><td class="c">40</td><td class="c">40</td><td class="c">40</td><td class="c">30</td><td class="c">150</td></tr>
+      </table>
+      <p class="note">Chưa gồm nhóm <b>Instrument</b> và bản thu nghệ sĩ — bổ sung song song để chạm mốc 200. Sản xuất khởi động ngay tháng đầu: app đẹp mà kho rỗng là thất bại.</p>
+    </div>
+    <div class="rv d3">
+      <h3 style="margin-top:0">Noise — 30 master, nhóm dễ nhất</h3>
+      <div>
+        <span class="tag">White Noise</span><span class="tag">Pink</span><span class="tag">Brown</span><span class="tag">Mưa</span><span class="tag">Quạt</span><span class="tag">Máy lạnh</span><span class="tag">Nước</span><span class="tag">Rừng</span><span class="tag">Biển</span><span class="tag">Ngủ sâu</span>
+      </div>
+      <div class="num-list" style="margin-top:14px">
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Mỗi master xuất 3 độ dài</b><p>30 / 60 / 120 phút — một bản thu, ba video.</p></div></div>
+        <div class="num-item"><div class="n">·</div><div class="bd"><b>Hình ảnh: một artwork lặp</b><p>chi phí gần bằng không, kéo lượt nghe rất cao — đúng phân khúc app nhạc ngủ 1,66 tỷ USD.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. 70/20/10 -->
+<section class="slide">
+  <div class="kicker rv">Phần 13 · Sản xuất khôn ngoan</div>
+  <h2 class="rv d1">Công thức sản xuất <em>70 / 20 / 10</em></h2>
+  <div class="bar-row rv d2">
+    <div class="bar-item"><div class="lb"><b>70% — Tự làm trong nhà / công cụ AI</b><span>Sound · Noise · Meditation đơn giản · Visual</span></div><div class="tr"><div class="fl" style="width:70%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>20% — Bán chuyên nghiệp</b><span>Instrument · Music · Meditation có người dẫn</span></div><div class="tr"><div class="fl" style="width:20%"></div></div></div>
+    <div class="bar-item"><div class="lb"><b>10% — Sản xuất chuyên nghiệp</b><span>Nghệ sĩ · Mantra · Session đặc biệt · Band thu live</span></div><div class="tr"><div class="fl" style="width:10%"></div></div></div>
+  </div>
+  <div class="quotebox rv d3">Phần đông kho làm nhanh trong nhà. Nguồn lực lớn chỉ dồn cho 10% đỉnh — bản thu nghệ sĩ tạo khác biệt không ai sao chép được.</div>
+  <p class="note rv d4">Hàng rào cạnh tranh: app quốc tế không có chuông thật, không gian thật và nghệ sĩ mantra Việt. Mảng mantra tiếng Việt hiện chưa ai chiếm lĩnh.</p>
+</section>
+
+<!-- 15. HỘI VIÊN + VẬN HÀNH (gộp) -->
+<section class="slide">
+  <div class="kicker rv">Phần 14 · Doanh thu đều &amp; vận hành nhẹ</div>
+  <h2 class="rv d1">Máy chạy tiền phía trước — <em>mắt thần phía sau</em></h2>
+  <div class="cards">
+    <div class="cardx rv d1"><div class="t">Hội viên tự vận hành</div><p>Đăng ký online, kích hoạt tức thì, quyền lợi tự trừ, nhắc gia hạn trước 7 ngày — hết cảnh dò sổ.</p></div>
+    <div class="cardx rv d2"><div class="t">Lịch không bao giờ trùng</div><p>Hệ thống biết phòng trống, therapist rảnh — hai khách không thể đặt cùng một chỗ, kể cả bấm cùng giây.</p></div>
+    <div class="cardx rv d3"><div class="t">Giới thiệu có thưởng</div><p>Mỗi hội viên một mã riêng — cả hai nhận thưởng, Samten biết chính xác ai mang khách về.</p></div>
+    <div class="cardx rv d4"><div class="t">Hồ sơ khách 360°</div><p>Gõ tên hoặc SĐT — thấy toàn bộ: học gì, gói nào, chi bao nhiêu. Kiosk điểm danh ghi thẳng vào đây.</p></div>
+    <div class="cardx rv d4"><div class="t">Dashboard buổi sáng</div><p>Doanh thu hôm qua, khách hôm nay, hội viên sắp hết hạn, lớp trống chỗ — 30 giây nắm hết.</p></div>
+    <div class="cardx rv d5"><div class="t">Dữ liệu nhạy cảm được bảo vệ</div><p>Ghi chú trị liệu chỉ therapist phụ trách xem được — theo quy định bảo vệ dữ liệu cá nhân VN từ ngày đầu.</p></div>
+  </div>
+</section>
+
+<!-- 16. LỘ TRÌNH -->
+<section class="slide">
+  <div class="kicker rv">Phần 15 · Cách chúng ta đi</div>
+  <h2 class="rv d1">Bốn tháng, <em>mỗi tháng một cột mốc chạm được</em></h2>
+  <div class="timeline">
+    <div class="tl rv d1"><div class="m">Tháng 1</div><div class="t">Móng nhà</div><p>Chốt yêu cầu · thiết kế 62 màn hình · nền tảng kỹ thuật &amp; đăng nhập</p></div>
+    <div class="tl rv d2"><div class="m">Tháng 2</div><div class="t">Cửa chính</div><p>Website song ngữ · quản trị nội dung · chuẩn Google</p></div>
+    <div class="tl rv d3"><div class="m">Tháng 3</div><div class="t">Dòng tiền</div><p>Đặt lịch chạy thật · thanh toán online · hội viên kích hoạt &amp; gia hạn</p></div>
+    <div class="tl rv d4"><div class="m">Tháng 4</div><div class="t">Khai trương</div><p>Kiosk · khu thành viên · dashboard · referral · lên sóng</p></div>
+  </div>
+  <div class="num-list rv d5" style="margin-top:16px">
+    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Cuối mỗi tháng có bản chạy được để Samten bấm thử</b><p>— nghiệm thu xong mới sang giai đoạn kế.</p></div></div>
+    <div class="num-item"><div class="n">✓</div><div class="bd"><b>Sản xuất nội dung song song từ tuần đầu</b><p>— ngày khai trương là ngày kho đã có bản thu thật.</p></div></div>
+  </div>
+  <p class="note rv d5">Khối lượng chi tiết từng hạng mục và ngân sách tương ứng: file Excel đính kèm.</p>
+</section>
+
+<!-- 17. NEXT STEPS -->
+<section class="slide dark">
+  <div class="cover-photo"><img alt="" src="https://images.pexels.com/photos/8391649/pexels-photo-8391649.jpeg?auto=compress&cs=tinysrgb&w=1200" onerror="this.style.display='none'"></div>
+  <div class="inner">
+    <div class="kicker rv">Phần 16 · Bắt đầu &nbsp;<span class="gdot"></span></div>
+    <h2 class="rv d1" style="color:var(--cream)">Ba việc cho <em>tuần tới</em></h2>
+    <div class="num-list">
+      <div class="num-item rv d2"><div class="n" style="color:var(--brass-soft)">1</div><div class="bd"><b style="color:var(--cream)">Workshop khởi động (nửa ngày).</b><p style="color:#a99cb8">Chốt phạm vi cùng nhau: mục tiêu số một, cơ cấu doanh thu, gói hội viên, cách ghi nhận dữ liệu trị liệu.</p></div></div>
+      <div class="num-item rv d3"><div class="n" style="color:var(--brass-soft)">2</div><div class="bd"><b style="color:var(--cream)">Duyệt sitemap &amp; bộ thiết kế màn hình.</b><p style="color:#a99cb8">Thống nhất "cái gì nằm ở đâu" trên 62 màn hình trước khi viết code.</p></div></div>
+      <div class="num-item rv d4"><div class="n" style="color:var(--brass-soft)">3</div><div class="bd"><b style="color:var(--cream)">Khởi động sản xuất 10 master đầu tiên.</b><p style="color:#a99cb8">Sound + Noise theo công thức 70% tự làm — ngày khai trương là có nội dung thật.</p></div></div>
+    </div>
+    <div class="footer-contact">
+      <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Không gian</div>Samten Space — Lầu G</div>
+      <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Hotline</div>0918 939 980</div>
+      <div class="contact-card rv d5" style="color:var(--cream)"><div class="k">Facebook</div>facebook.com/samten.vn</div>
+    </div>
+    <p class="note rv d5">Samten Sound &amp; Music Therapy — không liên quan khu du lịch Samten Hills Đà Lạt · Kèm: bản chạy thật samten-web.vercel.app · bảng khối lượng &amp; ngân sách (Excel) · đặc tả kỹ thuật</p>
+  </div>
+</section>
+
+</main>
+
+<div class="pager">
+  <div class="brand">Sam<span>ten</span></div>
+  <div class="ctr"><span id="cur">1</span> / <span id="tot">17</span></div>
+  <div class="btns">
+    <button id="prev" aria-label="Trang trước"><svg viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+    <button id="next" aria-label="Trang kế"><svg viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></svg></button>
+  </div>
+</div>
+
+<script>
+"use strict";
+const deck = document.getElementById("deck");
+const slides = Array.from(document.querySelectorAll(".slide"));
+document.getElementById("tot").textContent = slides.length;
+let cur = 0;
+
+/* đếm trang */
+const io = new IntersectionObserver((ents) => {
+  ents.forEach(e => {
+    if (e.isIntersecting){
+      cur = slides.indexOf(e.target);
+      document.getElementById("cur").textContent = cur + 1;
+    }
+  });
+}, { root: deck, threshold: 0.5 });
+slides.forEach(s => io.observe(s));
+
+/* hiệu ứng hiện dần như welcome page */
+const rvIO = new IntersectionObserver((ents) => {
+  ents.forEach(e => { if (e.isIntersecting) e.target.classList.add("in"); });
+}, { root: deck, threshold: 0.18 });
+document.querySelectorAll(".rv").forEach(el => rvIO.observe(el));
+
+/* bụi sáng trên trang bìa */
+(function(){
+  const cv = document.getElementById("coverFx");
+  if (!cv || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const cx = cv.getContext("2d");
+  const motes = Array.from({length:22}, () => ({
+    x: Math.random(), y: Math.random(), r: 0.6 + Math.random() * 1.6,
+    vy: 0.05 + Math.random() * 0.1, ph: Math.random() * Math.PI * 2,
+  }));
+  function draw(){
+    const rect = cv.getBoundingClientRect();
+    if (rect.bottom < 0){ requestAnimationFrame(draw); return; }
+    if (cv.width !== (rect.width * devicePixelRatio | 0)){
+      cv.width = rect.width * devicePixelRatio; cv.height = rect.height * devicePixelRatio;
+    }
+    const W = cv.width, H = cv.height, now = performance.now();
+    cx.clearRect(0, 0, W, H);
+    motes.forEach(m => {
+      m.y -= m.vy / 900; if (m.y < -0.02){ m.y = 1.02; m.x = Math.random(); }
+      const a = 0.12 + 0.24 * (0.5 + 0.5 * Math.sin(now / 1400 + m.ph));
+      cx.beginPath();
+      cx.arc(m.x * W, m.y * H, m.r * devicePixelRatio, 0, Math.PI * 2);
+      cx.fillStyle = `rgba(230,196,140,${a.toFixed(3)})`;
+      cx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+deck.addEventListener("scroll", () => {
+  const p = deck.scrollTop / (deck.scrollHeight - deck.clientHeight);
+  document.getElementById("bar").style.width = (p * 100).toFixed(2) + "%";
+}, { passive: true });
+
+function go(i){
+  const t = Math.max(0, Math.min(slides.length - 1, i));
+  slides[t].scrollIntoView({ behavior: "smooth", block: "start" });
+}
+document.getElementById("next").onclick = () => go(cur + 1);
+document.getElementById("prev").onclick = () => go(cur - 1);
+document.addEventListener("keydown", (e) => {
+  if (["ArrowDown", "PageDown", " "].includes(e.key)){ e.preventDefault(); go(cur + 1); }
+  if (["ArrowUp", "PageUp"].includes(e.key)){ e.preventDefault(); go(cur - 1); }
+  if (e.key === "Home") go(0);
+  if (e.key === "End") go(slides.length - 1);
+});
+</script>
+</body>
+</html>
