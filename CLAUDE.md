@@ -33,10 +33,11 @@ tiếp bằng Web Audio API**, không có file nhạc nào. Đây là điểm kh
 | `samten-intro.html` | Bản preview riêng của trang giới thiệu, dùng để khách duyệt trước khi ghép. Đã ghép vào app rồi, giữ lại làm tham chiếu. Xem tại `/samten-intro` |
 | `vercel.json` | `cleanUrls: true` (nên `/samten-intro.html` redirect 308 sang `/samten-intro`), 2 header bảo mật |
 | `CLAUDE.md` | File này |
+| `.claude/launch.json` | Cấu hình `preview_start` dựng `python -m http.server 8899` để đo bản local. Bắt buộc dùng server: mở bằng `file://` thì pane render ảnh tĩnh, JS không chạy nên không đo được gì |
 
 ### Điều hướng
 
-Nav ba ô, **Samten ở giữa và nhô lên** thành vòng đồng (`.nav-btn.mid`):
+Nav ba ô, Samten ở giữa là vòng đồng chữ S (`.nav-btn.mid`), **phẳng bằng hàng** với hai ô kia:
 
 ```
 Thư viện  ·  (S) Samten  ·  Cài đặt
@@ -172,6 +173,55 @@ loé rồi tắt phụt, không sóng, không mảnh vỡ. Đã thêm một bloc
 độ sáng và fade opacity cho `.cer-orb` (không phải chuyển động không gian nên không gây chóng mặt),
 và `waveFx.still()` vẽ ba vòng đứng yên. **Nếu máy test báo `reduce` thì bạn sẽ không thấy hiệu ứng
 nào, đừng kết luận là code sai.**
+
+**Canh giữa bằng `vh` cố định là đoán, không phải đo.** Chế độ chìm đắm từng đẩy khối
+ảnh + tên + đồng hồ xuống `translateY(7vh)`. Ở khung 375x812 thì gần giữa (trên 110px, dưới 144px),
+nhưng ở 412x680 thì đồng hồ tụt sát đáy (trên 101px, dưới 32px) vì phần trên khối là chiều cao
+tuyệt đối còn `7vh` co theo khung. Nay `zenCenter()` đo mốc thật rồi đặt biến `--zenY`; đo lại ở
+360x600 (63/62), 412x680, 430x915 (223/223) đều ra khe trên bằng khe dưới. `7vh` chỉ còn là giá trị
+dự phòng trong `var(--zenY,7vh)`. Ba chi tiết của phép đo này, thiếu cái nào cũng lệch:
+
+1. **Phải tắt transition trước khi đo.** `getBoundingClientRect` khi transform đang chuyển trả về
+   giá trị NỘI SUY, không phải mốc 0 vừa gán, nên phép đo lệch đúng bằng phần transition còn dở.
+   Class `.sheet.measuring` tắt transition, gán 0, đọc rect, bỏ class, rồi mới gán giá trị thật.
+2. **Mốc dưới là `#elapsed`, không phải `.np-time`,** và còn trừ `0.16em`: dòng "phát liền mạch"
+   dưới chữ số đã mờ nhưng vẫn chiếm ~23px, còn `line-height:1` làm mép dưới line box nằm dưới chân
+   chữ số thêm ~0.16em (Roboto).
+3. **`--zenGap` dồn khoảng chết bằng transform.** `.np-desc` và `.np-use` mờ nhưng vẫn chiếm ~98px,
+   đẩy đồng hồ xa tên bài (ở 360x600 cả khối chiếm 584/600px, không còn khe nào). Kéo đồng hồ lên
+   bằng `translateY(calc(var(--zenY) - var(--zenGap)))` · dùng transform nên không có cú giật
+   reflow như khi thu `max-height` hay `display:none`.
+
+**Đáy màn là MỘT khối `#dock`, không phải hai khối rời.** `#dock` là phần tử fixed duy nhất ở đáy,
+bên trong nó `.mini` (trong luồng, `margin:0 8px 8px`) ngồi ngay trên `<nav>` · bố cục kiểu Spotify.
+Đo ở khung 412x680: dock cao 150px khi có mini, 79px khi không. `.view` lấy `padding-bottom:
+calc(var(--dockH) + 22px)` với `--dockH` do `setDockH()` đo, gọi lại trong `updateUI` và khi resize.
+
+Đường đi tới đây là hai lần sai, đừng đi lại:
+
+1. Bản đầu để mini và nav là **hai khối fixed rời nhau**, mỗi khối tự canh với mép đáy. Vòng đồng
+   nhô lên 20px thì chọc vào mini, mini lại có z-index cao hơn nên cắt ngang vòng thành một đường
+   thẳng. Nới `bottom` của mini ra chỉ làm mini trôi lơ lửng giữa màn · khách nói thẳng là "quá xấu".
+2. **`getBoundingClientRect` KHÔNG tính `box-shadow`.** Vòng đồng có vành cắt spread 7px và quầng
+   vươn lên ~10px, nên mép NHÌN THẤY cao hơn mép hình học tới 17px. Đo hình học ra 99px rồi để mini
+   ở 104px thì vẫn cắt. Khi canh khoảng cách với phần tử có shadow, cộng tay spread và
+   `blur - offsetY`.
+
+**Ba icon nav phải cùng CHIỀU CAO HỘP và cùng cỡ quang học, hai chuyện khác nhau.** Hộp: svg để
+`height:28px` bằng vòng đồng, `preserveAspectRatio` mặc định canh giữa nét vẽ nên không méo · đo
+được tâm cả ba đều ở cùng một y. Cỡ quang học: nét vẽ trong viewBox 24 mỗi icon một khác (lưới
+chiếm 16 đơn vị, bánh răng chiếm 22.6), nên bánh răng dùng `viewBox="-3.4 -3.3 30 30"` để thu về
+16.5px và `stroke-width:1.9` bù phần bị thu. Nav cũng dùng `grid` ba cột bằng nhau chứ không phải
+`space-around` · space-around chia khoảng theo bề rộng từng ô nên ô giữa lệch khỏi tâm.
+
+**Icon Cài đặt là bánh răng, không phải mặt trời.** Mặt trời/mặt trăng là nút đổi sáng tối ở
+header; để mặt trời ở nav thì hai nơi cùng một icon mà khác chức năng.
+
+**Nút nổi của trình duyệt trong ứng dụng đè lên giữa đáy, và trang không tắt được nó.** Samsung
+Internet (và Zalo, Messenger) đậu một nút tròn hiện thanh công cụ ngay giữa đáy khung web, khoảng
+50px đến 95px tính từ mép đáy · đúng dải hàng nav. Không có cách nào thoát: muốn tránh hẳn thì phải
+bỏ trống 95px cuối màn hình. Vì vậy nav để phẳng, không có gì nhô ra (Spotify, YouTube Music cũng
+chịu đúng chỗ đè này) · phần bị che là icon phẳng chứ không phải một vòng đồng bị chặt đầu.
 
 ### JavaScript
 

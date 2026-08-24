@@ -15,6 +15,8 @@
   --brass:#d2a566; --brass-soft:#eed4a6; --brass-glow:rgba(226,186,124,.55);
   --cream:#f5ebe6; --muted:#b49dc0; --line:rgba(245,235,230,.11);
   --safe-b:env(safe-area-inset-bottom,0px);
+  /* nền dock đáy · đục hẳn, khớp nền trang để mini và nav đọc ra như một khối liền */
+  --dock-bg:#1b0f22;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 /* Hai dòng này phải tách ra, và body BẮT BUỘC dùng clip chứ không phải hidden:
@@ -189,7 +191,9 @@ header{display:flex;align-items:center;justify-content:space-between;padding:20p
 .wordmark{font-family:"Roboto",sans-serif;font-weight:500;font-size:20px;letter-spacing:.34em;text-transform:uppercase}
 .wordmark span{color:var(--brass)}
 .demo-tag{font-size:9px;letter-spacing:.22em;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 10px;text-transform:uppercase}
-.view{display:none;padding-bottom:calc(152px + var(--safe-b))}
+/* --dockH do JS đo (xem setDockH): chiều cao dock đổi theo việc mini player có hiện hay
+   không, nên số cứng thì hoặc thừa một khoảng trống, hoặc thiếu và bị mini che nội dung. */
+.view{display:none;padding-bottom:calc(var(--dockH, 148px) + 22px)}
 .view.on{display:block}
 .eyebrow{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--brass)}
 .page-head{padding:18px 22px 6px}
@@ -507,39 +511,46 @@ a.fb svg{width:16px;height:16px;fill:var(--brass)}
   line-height:1.6;color:var(--muted);background:rgba(210,165,102,.06);border:1px solid rgba(210,165,102,.18)}
 #view-samten .note b{color:var(--brass-soft);font-weight:500}
 
-/* ô nav giữa · vòng đồng nhô lên trên thanh nav, là mục Samten */
-.nav-btn.mid{padding:0 10px}
+/* ô nav giữa · chữ S trong vòng đồng, PHẲNG bằng hàng với hai ô kia.
+   Bản trước cho vòng đồng nhô lên 20px: nó chọc vào mini player, và nút nổi của trình duyệt
+   trong ứng dụng đậu đúng chỗ đó nên vòng bị đè. Nay không có gì nhô ra khỏi hàng nav. */
 .nav-btn.mid .ring{
-  width:52px;height:52px;border-radius:50%;display:grid;place-items:center;margin-bottom:3px;
+  width:28px;height:28px;border-radius:50%;display:grid;place-items:center;
   background:radial-gradient(circle closest-side, #f3d9ab, var(--brass) 88%);
-  box-shadow:0 8px 22px rgba(210,165,102,.34), inset 0 1px 0 rgba(255,246,224,.6);
-  transform:translateY(-14px);
+  box-shadow:0 2px 7px rgba(210,165,102,.3), inset 0 1px 0 rgba(255,246,224,.6);
 }
-.nav-btn.mid .ring span{font-family:"Roboto",sans-serif;font-weight:500;font-size:15px;
+.nav-btn.mid .ring span{font-family:"Roboto",sans-serif;font-weight:500;font-size:13px;
   letter-spacing:.06em;color:#241a10}
-.nav-btn.mid .lbl{margin-top:-11px}
 .nav-btn.mid.on{color:var(--brass)}
-.nav-btn.mid.on::after{display:none}
-nav{align-items:flex-end}
 
-/* ================= NAV + MINI ================= */
-nav{
+/* ================= DOCK ĐÁY (mini + nav) ================= */
+#dock{
   position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:440px;z-index:40;
-  padding:8px 12px calc(10px + var(--safe-b));
-  background:linear-gradient(to top, rgba(23,11,29,.97) 55%, rgba(23,11,29,0));
-  display:flex;justify-content:space-around;
+  padding-bottom:var(--safe-b);
+  /* mờ dần lên trên · nội dung cuộn qua dưới dock thì nhoà đi thay vì bị cắt ngang */
+  background:linear-gradient(to top, var(--dock-bg) 0%, var(--dock-bg) 66%, transparent 100%);
 }
-.nav-btn{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:9.5px;letter-spacing:.06em;color:var(--muted);padding:6px 10px;transition:color .25s ease}
-.nav-btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* grid ba cột bằng nhau, không phải space-around · space-around chia khoảng theo BỀ RỘNG
+   từng ô nên ô giữa lệch khỏi tâm khi hai nhãn hai bên dài ngắn khác nhau */
+nav{display:grid;grid-template-columns:repeat(3,1fr);align-items:center;padding:4px 8px 10px}
+.nav-btn{display:flex;flex-direction:column;align-items:center;justify-self:center;gap:5px;font-size:9.5px;letter-spacing:.06em;color:var(--muted);padding:8px 16px;border-radius:14px;transition:color .25s ease,background .3s ease,box-shadow .3s ease}
+/* hộp icon cao 28px cho CẢ BA ô · svg cao 20 còn vòng đồng cao 28 thì tâm icon lệch nhau
+   dù nhãn dưới có thẳng hàng. Cho svg cùng chiều cao 28: preserveAspectRatio mặc định
+   (xMidYMid meet) canh giữa nét vẽ trong hộp, không kéo méo. */
+.nav-btn svg{width:22px;height:28px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+/* bánh răng chiếm 22.6/24 đơn vị viewBox trong khi icon lưới chỉ chiếm 16/24 · viewBox rộng
+   hơn để thu nó về cùng cỡ quang học, và nét dày lên bù đúng phần bị thu (1.9 x 0.8 = 1.52) */
+.nav-btn svg.gear{stroke-width:1.9}
 .nav-btn.on{color:var(--brass)}
+/* mini player ngồi TRONG dock, ngay trên hàng nav · không còn tự canh với mép đáy */
 .mini{
-  position:fixed;left:50%;transform:translateX(-50%) translateY(140px);
-  bottom:calc(68px + var(--safe-b));width:calc(100% - 28px);max-width:412px;z-index:41;
-  display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:17px;
-  background:rgba(36,27,50,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid var(--line);transition:transform .45s cubic-bezier(.32,.9,.35,1);cursor:pointer;
+  display:none;align-items:center;gap:12px;margin:0 8px 8px;padding:9px 12px;border-radius:14px;
+  width:auto;text-align:left;cursor:pointer;
+  background:var(--night2);border:1px solid var(--line);
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
 }
-.mini.show{transform:translateX(-50%) translateY(0)}
+.mini.show{display:flex;animation:miniIn .38s cubic-bezier(.32,.9,.35,1)}
+@keyframes miniIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .mini .thumb{width:42px;height:42px;border-radius:11px;overflow:hidden;flex:0 0 auto;background:var(--night3)}
 .mini .t{flex:1;min-width:0}
 .mini .t .n{font-family:"Roboto",sans-serif;font-style:italic;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -667,13 +678,27 @@ body.light .np-time .el{animation:none;filter:none}
 /* chế độ chìm đắm: chạm ảnh, UI tan biến */
 .sheet.zen .sheet-top,.sheet.zen .np-desc,.sheet.zen .controls,.sheet.zen .aux,.sheet.zen .zen-hint,.sheet.zen .np-time .inf{opacity:0;pointer-events:none}
 .sheet .sheet-top,.sheet .np-desc,.sheet .controls,.sheet .aux,.sheet .zen-hint{transition:opacity .8s ease}
-.sheet.zen .stage{transform:translateY(7vh) scale(1.05)}
-.sheet.zen .np-meta,.sheet.zen .np-time{transform:translateY(7vh)}
-.sheet.zen .np-time .el{font-size:clamp(66px,21vw,104px);letter-spacing:.02em}
+/* --zenY do JS ĐO rồi đặt (xem zenCenter). 7vh chỉ là giá trị dự phòng khi JS chưa chạy:
+   một con số vh cố định lệch theo chiều cao khung · đo được ở 412x680 thì đồng hồ chỉ còn
+   32px tới đáy trong khi trên đầu còn 101px, nên khối chìm đắm không nằm giữa khung. */
+.sheet.zen .stage{transform:translateY(var(--zenY,7vh)) scale(1.05)}
+.sheet.zen .np-meta,.sheet.zen .np-time{transform:translateY(var(--zenY,7vh))}
+/* Câu mô tả và dòng liều lượng đã mờ nhưng VẪN chiếm chỗ (đo được ~85px) nên đồng hồ bị
+   đẩy xa tên bài, khung cao 600 thì cả khối chiếm 584/600px. Kéo đồng hồ lên đúng khoảng
+   chết đó bằng transform · không đụng layout nên không có cú giật reflow nào. */
+.sheet.zen .np-time{transform:translateY(calc(var(--zenY,7vh) - var(--zenGap,0px)))}
+.sheet.zen .np-time .el{font-size:clamp(58px,18vw,92px);letter-spacing:.02em}
+/* khoá cuộn trong chìm đắm · phần dưới đã mờ hết, cuộn xuống chỉ thấy khoảng trống
+   và làm lệch phép canh giữa */
+.sheet.zen .pane{overflow:hidden}
 /* KHÔNG transition font-size: đó là animate layout, mỗi frame một lần reflow, và nếu
    transition bị ngắt giữa đường thì chữ số kẹt ở cỡ trung gian. Cỡ chữ đổi tức thì,
    độ mượt khi vào zen đã có translateY của .np-time/.np-meta đảm nhiệm. */
 .sheet .stage,.sheet .np-meta,.sheet .np-time{transition:transform 1.2s ease}
+/* Lúc zenCenter() đo, transform PHẢI hết transition. Đọc getBoundingClientRect trong khi
+   transform đang chuyển trả về giá trị NỘI SUY chứ không phải mốc 0 vừa gán, nên phép đo
+   lệch đúng bằng phần transition còn dở (đo được: chữ số lệch xuống ~10px ở khung 360x600). */
+.sheet.measuring .stage,.sheet.measuring .np-meta,.sheet.measuring .np-time{transition:none}
 
 /* ===== banner hành trình ===== */
 .journey-cta{
@@ -738,6 +763,7 @@ body.light{
   --night:#faf5f8; --night2:#ffffff; --night3:#f1e8ef;
   --brass:#96652a; --brass-soft:#7c5a22; --brass-glow:rgba(150,101,42,.4);
   --cream:#2c2030; --muted:#6f6278; --line:rgba(60,44,66,.14);
+  --dock-bg:#f6f1f6;
   background:#f0e9f0;color:var(--cream);
 }
 body.light .app{
@@ -894,19 +920,19 @@ body.light::after{background:radial-gradient(120% 92% at 50% 40%, transparent 62
 }
 body.light .hero-cta,body.light .big-play,body.light .mini .pp,body.light #cerEnter,body.light #jEnd button,body.light .journey-cta .go,body.light .daily .go,body.light .feat.wide .go,body.light #humStart,body.light .chip.on,body.light .p-chip.on,body.light .t-opt.on{color:#2a1c0e;box-shadow:inset 0 1px 0 rgba(255,241,215,.6), inset 0 -1px 0 rgba(90,60,25,.3), 0 6px 16px rgba(120,92,52,.28)}
 .big-play svg,.mini .pp svg,body.light .big-play svg,body.light .mini .pp svg{fill:#2a1c0e}
-/* ===== nav phao nổi ===== */
-nav{padding-top:12px}
-nav::before{
-  content:"";position:absolute;left:16px;right:16px;top:4px;bottom:calc(6px + var(--safe-b));
-  border-radius:24px;z-index:-1;
-  background:rgba(30,23,42,.7);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
-  border:1px solid var(--line);
-}
-body.light nav::before{background:rgba(255,255,255,.78)}
+/* ===== dock đáy · viền trên mảnh và chip ô đang chọn ===== */
+#dock nav{border-top:1px solid var(--line)}
+body.light .nav-btn.mid .ring{box-shadow:0 2px 7px rgba(120,92,52,.26), inset 0 1px 0 rgba(255,255,255,.7)}
+body.light .mini{box-shadow:0 6px 16px rgba(90,70,100,.14)}
 .nav-btn{position:relative}
-.nav-btn.on::after{
-  content:"";position:absolute;bottom:-1px;left:50%;transform:translateX(-50%);
-  width:4px;height:4px;border-radius:50%;background:var(--brass);
+/* ô đang chọn: một chip đồng mờ sau chữ, thay cho chấm 4px cũ · chấm quá nhỏ để đọc ra */
+.nav-btn.on{
+  background:linear-gradient(180deg, rgba(210,165,102,.17), rgba(210,165,102,.05));
+  box-shadow:inset 0 0 0 1px rgba(210,165,102,.24);
+}
+body.light .nav-btn.on{
+  background:linear-gradient(180deg, rgba(150,101,42,.13), rgba(150,101,42,.04));
+  box-shadow:inset 0 0 0 1px rgba(150,101,42,.22);
 }
 /* ===== chấm thở trên header khi có âm ===== */
 #liveDot{
@@ -1245,7 +1271,10 @@ body.light nav::before{background:rgba(255,255,255,.78)}
     <div class="foot">© 2026 SAMTEN SOUND &amp; MUSIC THERAPY</div>
   </main>
 
-  <!-- ================= MINI + NAV ================= -->
+  <!-- ================= DOCK ĐÁY: MINI + NAV =================
+       Một khối duy nhất. Trước đây mini player và nav là hai khối fixed rời nhau, mỗi khối
+       tự canh với mép đáy, nên vòng đồng nhô lên chọc vào mini và mini trông như trôi. -->
+  <div id="dock">
   <button class="mini" id="mini" aria-label="Mở trình phát">
     <div class="thumb"><img id="miniImg" alt="" onerror="imgFb(this)"></div>
     <div class="t"><div class="n" id="miniName">·</div><div class="c" id="miniCat">·</div></div>
@@ -1265,11 +1294,14 @@ body.light nav::before{background:rgba(255,255,255,.78)}
       <span class="ring"><span>S</span></span>
       <span class="lbl">Samten</span>
     </button>
+    <!-- bánh răng, KHÔNG phải mặt trời · mặt trời là nút đổi sáng/tối ở header, để ở nav
+         thì hai nơi cùng một icon mà khác chức năng -->
     <button class="nav-btn" data-nav="set">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+      <svg class="gear" viewBox="-3.4 -3.3 30 30"><circle cx="12" cy="12" r="3.1"/><path d="M19.1 14.6a1.7 1.7 0 0 0 .34 1.87l.06.06a2.05 2.05 0 1 1-2.9 2.9l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.55v.17a2.05 2.05 0 1 1-4.1 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2.05 2.05 0 1 1-2.9-2.9l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1.03H2.2a2.05 2.05 0 1 1 0-4.1h.09A1.7 1.7 0 0 0 3.84 8.4a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2.05 2.05 0 1 1 2.9-2.9l.06.06a1.7 1.7 0 0 0 1.87.34h.08a1.7 1.7 0 0 0 1.03-1.55V2.2a2.05 2.05 0 1 1 4.1 0v.09a1.7 1.7 0 0 0 1.03 1.55 1.7 1.7 0 0 0 1.87-.34l.06-.06a2.05 2.05 0 1 1 2.9 2.9l-.06.06a1.7 1.7 0 0 0-.34 1.87v.08a1.7 1.7 0 0 0 1.55 1.03h.17a2.05 2.05 0 1 1 0 4.1h-.09a1.7 1.7 0 0 0-1.55 1.03z"/></svg>
       Cài đặt
     </button>
   </nav>
+  </div>
 
   <!-- ================= NGÂN CÙNG CHUÔNG ================= -->
   <div id="hum" class="ovl" aria-hidden="true">
@@ -1939,7 +1971,11 @@ const waveFx = (function(){
     }
     waves = waves.filter(v => now - v.t0 < v.life);
     for (const v of waves){
-      const k = (now - v.t0) / v.life;
+      /* PHẢI kẹp về [0,1]. Mốc `now` của requestAnimationFrame là thời điểm BẮT ĐẦU frame,
+         có thể sớm hơn performance.now() lúc emit (vòng chạm được nhả trong setTimeout), nên
+         k âm · khi đó (1-k)^2.3 > 1, e âm, bán kính ra số âm và arc() ném IndexSizeError,
+         giết luôn vòng lặp vẽ. Đã gặp thật: "The radius provided (-7.69811) is negative". */
+      const k = Math.min(1, Math.max(0, (now - v.t0) / v.life));
       const e = 1 - Math.pow(1 - k, 2.3);          /* bung nhanh lúc đầu, dạt chậm về sau */
       const rad = R * (v.r0 + (v.r1 - v.r0) * e);
       const a = v.a * Math.pow(1 - k, 1.7);
@@ -2343,6 +2379,12 @@ function stepTrack(dir){
   const i = pool.findIndex(t => t.id === player.track.id);
   playTrack(pool[(i + dir + pool.length) % pool.length]);
 }
+/* Chiều cao dock đáy · ĐO, không đoán: mini player hiện thì dock cao thêm ~80px, và
+   .view lấy số này làm padding-bottom nên nội dung cuối không bao giờ nằm dưới dock. */
+function setDockH(){
+  document.documentElement.style.setProperty("--dockH", $("#dock").offsetHeight + "px");
+}
+addEventListener("resize", setDockH);
 const PLAY_D = "M4 2.5v11l9-5.5z", PAUSE_D = "M4 2.5h3v11H4zM9.5 2.5h3v11h-3z";
 function updateUI(){
   const t = player.track;
@@ -2363,6 +2405,9 @@ function updateUI(){
   $("#sheet").classList.toggle("paused", !!t && !player.playing);
   $("#stage").classList.toggle("breath", !!t && t.engine === "breath" && player.playing);
   renderGrid();
+  setDockH();
+  /* dòng liều lượng dài ngắn khác nhau nên đổi bản là đổi chiều cao khối · đo lại */
+  if (sheet.classList.contains("zen")) zenCenter();
 }
 setInterval(() => {
   const ms = player.accum + (player.playing ? performance.now() - player.startedAt : 0);
@@ -2385,7 +2430,43 @@ const sheet = $("#sheet");
 function openSheet(){ sheet.classList.add("open"); sheet.setAttribute("aria-hidden", "false"); }
 function closeSheet(){ sheet.classList.remove("open"); sheet.classList.remove("zen"); sheet.setAttribute("aria-hidden", "true"); }
 $("#sheetClose").onclick = closeSheet;
-$("#artTap").onclick = () => sheet.classList.toggle("zen");
+/* Canh giữa khối chìm đắm (ảnh + tên + đồng hồ) bằng phép ĐO, không bằng con số vh đoán
+   trước. Cách làm: đặt --zenY về 0, đo hai mốc thật ở frame sau, rồi đặt độ dịch cần thiết ·
+   vì vẫn là transform nên transition 1.2s của .stage/.np-meta/.np-time vẫn chạy mượt. */
+function zenCenter(){
+  const pane = sheet.querySelector(".pane");
+  if (!sheet.classList.contains("zen")){
+    sheet.style.removeProperty("--zenY"); sheet.style.removeProperty("--zenGap"); return;
+  }
+  pane.scrollTop = 0;
+  sheet.classList.add("measuring");        /* tắt transition, xem rule .sheet.measuring */
+  sheet.style.setProperty("--zenY", "0px");
+  /* khoảng chết của hai khối đã mờ · trừ đi nhưng chừa 12px khe cho tên bài thở */
+  const dead = [".np-desc", ".np-use"].reduce((sum, sel) => {
+    const e = sheet.querySelector(sel);
+    return sum + e.offsetHeight + parseFloat(getComputedStyle(e).marginTop) || sum;
+  }, 0);
+  sheet.style.setProperty("--zenGap", Math.max(0, Math.round(dead - 12)) + "px");
+  /* đọc rect là buộc trình duyệt tính lại layout NGAY, nên mốc 0px được chốt thành trạng
+     thái đầu của transition · không cần requestAnimationFrame, và đo được cả khi tab không
+     vẽ frame (pane test không compositing thì rAF không chạy). */
+  const p = pane.getBoundingClientRect();
+  const top = $("#stage").getBoundingClientRect().top;          /* mép trên ảnh */
+  /* mốc dưới là CHỮ SỐ, không phải cả .np-time · dòng "phát liền mạch" bên dưới đã mờ
+     nhưng vẫn chiếm ~23px, tính vào thì mắt thấy chữ số cao hơn tâm khung */
+  /* Trừ phần dưới của line box: line-height:1 nên hộp chữ thấp hơn hộp tự nhiên của font,
+     mép dưới hộp nằm dưới chân chữ số khoảng 0.16em (Roboto). Không trừ thì mắt thấy khối
+     lệch xuống đúng chừng đó. */
+  const el = $("#elapsed").getBoundingClientRect();
+  const bot = el.bottom - 0.16 * parseFloat(getComputedStyle($("#elapsed")).fontSize);
+  let dy = (p.top + p.height / 2) - (top + bot) / 2;
+  dy = Math.max(dy, p.top + 14 - top);   /* khung thấp quá thì thà sát mép trên hơn là tràn */
+  sheet.classList.remove("measuring");   /* bật lại transition · mốc 0 đã chốt ở trên */
+  sheet.style.setProperty("--zenY", Math.round(dy) + "px");
+}
+$("#artTap").onclick = () => { sheet.classList.toggle("zen"); zenCenter(); };
+/* thanh địa chỉ mobile hiện/ẩn cũng đổi chiều cao khung, nên đo lại */
+addEventListener("resize", () => { if (sheet.classList.contains("zen")) zenCenter(); });
 /* Trước đây chỉ hạ gain về 0, còn oscillator vẫn chạy mãi và vẫn nối vào master.
    Giờ tắt êm rồi DỪNG và NGẮT hẳn · sing.ensure() sẽ tự dựng lại khi xoa lần sau. */
 function killSing(){
@@ -2956,6 +3037,7 @@ $("#spOpts").addEventListener("click", (e) => {
 });
 $("#jLeave").onclick = journeyClose;
 $("#jDone").onclick = journeyClose;
+setDockH();          /* lần đo đầu · mini chưa hiện, dock chỉ có hàng nav */
 </script>
 </body>
 </html>
