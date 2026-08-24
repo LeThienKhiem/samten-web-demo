@@ -4,13 +4,29 @@ Demo trải nghiệm số cho Samten, một trung tâm trị liệu âm thanh th
 hotline 0918 939 980). App là cửa vào, buổi trọn vẹn 60 phút diễn ra ở phòng thật.
 
 **Live:** https://samten-web.vercel.app
-**Deploy:** `vercel deploy --prod --yes` từ thư mục gốc. Account `lethienkhiem`, project `samten-web`.
+**Deploy:** `git push origin main`. Repo `LeThienKhiem/samten-web-demo` đã link với Vercel nên
+push vào `main` là Vercel tự build production. **Đừng dùng `vercel` CLI.** Ngày 2026-08-24 tôi chạy
+`vercel deploy --prod --yes` theo dòng cũ của file này: CLI lúc đó đăng nhập account
+`khiemlethien-8760` (không phải `lethienkhiem`), account đó không có project `samten-web`, nên lệnh
+**tạo một project mới** `samten-web-demo` và publish bản chưa duyệt lên
+https://samten-web-demo.vercel.app, trong khi URL khách đang dùng vẫn là bản cũ. Push git không có
+cái bẫy đó. Kiểm sau khi push:
+
+```bash
+git ls-remote origin -h refs/heads/main                     # phải khớp commit local
+curl -s https://samten-web.vercel.app | grep -c 'id="dock"' # 1 = bản mới đã lên
+```
+
+Nếu push báo `Permission ... denied to <user>`: credential Windows đang là account khác, xoá bằng
+`cmdkey /delete:git:https://github.com` rồi push lại để nó hỏi đăng nhập.
 
 ## Quy tắc bắt buộc
 
 1. **Không dùng dấu em dash (`—`) ở bất kỳ đâu trong file**, kể cả trong comment code.
    Khách yêu cầu rõ. Dùng dấu `·` (middot) hoặc dấu phẩy. Kiểm bằng:
-   `python -c "print(open('index.html',encoding='utf-8').read().count('—'))"` phải ra 0.
+   `node -e "console.log((require('fs').readFileSync('index.html','utf8').match(/—/g)||[]).length)"`
+   phải ra 0. (Dùng node, không dùng python: `python` không có trên PATH của shell mà tôi chạy
+   lệnh, tuy `preview_start` vẫn gọi được nó.)
    (Hai dấu `—` trong chính mục 1 này là cố ý, vì đang nêu tên ký tự và viết lệnh đếm nó.
    Quy định áp cho `index.html` và `samten-intro.html`, không áp cho file này.)
 2. **Không hứa hiệu quả y khoa.** Bằng chứng khoa học của sound therapy còn mỏng, và quảng cáo
@@ -230,7 +246,7 @@ Function declaration hoist nên bản khai báo sau ghi đè bản trước. Hà
 `makeTrackCard`. Kiểm trùng tên:
 
 ```bash
-python -c "import re;b=open('index.html',encoding='utf-8').read();from collections import Counter;print({k:v for k,v in Counter(re.findall(r'^function\s+(\w+)',b,re.M)).items() if v>1})"
+node -e "const b=require('fs').readFileSync('index.html','utf8'),c={};[...b.matchAll(/^function\s+(\w+)/gm)].forEach(m=>c[m[1]]=(c[m[1]]||0)+1);console.log(Object.entries(c).filter(([,v])=>v>1))"
 ```
 
 **AudioContext trên mobile sinh ra ở trạng thái `suspended`, và `ctx.resume()` là async.** Gõ xong
@@ -296,11 +312,19 @@ Cuộn:      resize_window preset mobile (emulate touch) rồi computer{action:"
            dựng lại CSS cũ ngay trên trang rồi cuộn lại.
 Âm thanh:  OfflineAudioContext, dựng lại cả hai chuỗi, so RMS và đỉnh.
            Kiểm riêng dải trên 150Hz cho các engine trầm.
-Layout:    getBoundingClientRect, so tâm phần tử với tâm khung.
+Layout:    getBoundingClientRect, so tâm phần tử với tâm khung. Nhớ rằng rect
+           KHÔNG tính box-shadow, và trả về giá trị nội suy nếu transform
+           đang transition (tắt transition trước khi đo).
 Vòng đời:  bọc hàm để đếm lời gọi thật, và snapshot trạng thái mọi nguồn âm
            tại từng bước của luồng người dùng.
-Cú pháp:   trước mỗi deploy, tách <script> ra file tạm rồi node --check,
+Cú pháp:   trước mỗi push, tách <script> ra file tạm rồi node --check,
            và đếm cân bằng brace cùng comment trong <style>.
+```
+
+Nguyên khối kiểm cú pháp, chạy trước mỗi lần push:
+
+```bash
+node -e 'const fs=require("fs"),b=fs.readFileSync("index.html","utf8");console.log("emdash",(b.match(/—/g)||[]).length);fs.writeFileSync("_s.js",[...b.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m=>m[1]).join("\n"));const st=b.match(/<style>([\s\S]*?)<\/style>/)[1];console.log("brace",(st.match(/{/g)||[]).length-(st.match(/}/g)||[]).length,"comment",(st.match(/\/\*/g)||[]).length-(st.match(/\*\//g)||[]).length)' && node --check _s.js && echo OK; rm -f _s.js
 ```
 
 **Lưu ý về môi trường test:** Browser pane thường không compositing, nên `screenshot` hay timeout và
