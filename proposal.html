@@ -233,15 +233,27 @@ tr.total td{background:#f2ead9;font-weight:500}
 }
 .tagline span{font-style:normal;font-size:.72em;letter-spacing:.06em;opacity:.8}
 
-/* sáu chặng · giữ ĐÚNG thứ tự khách đưa, đừng sắp lại theo thứ tự thi công */
-.chain{display:grid;grid-template-columns:1fr;gap:9px;margin-top:16px}
-@media(min-width:681px){.chain{grid-template-columns:1fr 1fr;gap:10px}}
+/* sáu chặng · giữ ĐÚNG thứ tự khách đưa, đừng sắp lại theo thứ tự thi công.
+   Xếp DỌC kèm mũi tên ở mọi khổ, cùng kiểu .layers bên Sơ đồ tổng thể. Bản đầu
+   để sáu thẻ trong lưới không mũi tên: đọc ra "sáu hạng mục", không đọc ra dòng
+   chảy, đúng thứ mà slide này sinh ra để kể. Lưới 2 cột trên desktop cũng bỏ
+   luôn vì mũi tên trong lưới cuộn hàng sẽ chỉ sai hướng ở chỗ xuống dòng. */
+.chain{display:flex;flex-direction:column;margin-top:16px}
 .ch{position:relative;background:var(--card);border:1px solid var(--line);
-  border-radius:14px;padding:11px 14px 12px 44px}
-.ch i{position:absolute;left:14px;top:11px;font-style:normal;
+  border-radius:14px;padding:10px 14px 11px 44px}
+.ch i{position:absolute;left:14px;top:10px;font-style:normal;
   font-family:"Cormorant Garamond",serif;font-size:17px;font-weight:500;color:var(--brass)}
 .ch b{display:block;font-weight:500;font-size:14px}
 .ch span{display:block;font-size:12px;color:var(--muted);line-height:1.5;margin-top:2px}
+.ch-a{align-self:center;color:var(--brass);font-size:14px;line-height:1;padding:3px 0}
+/* desktop: thẻ rộng 870px nên mô tả nằm cùng dòng với tên chặng, đọc như bảng
+   và thu cả slide về vừa một màn (860px xuống 744px ở khung 1280x800). */
+@media(min-width:681px){
+  .ch{display:flex;align-items:baseline;gap:14px;padding:10px 16px 11px 46px}
+  .ch b{flex:0 0 152px}
+  .ch span{margin-top:0}
+  .ch-a{padding:2px 0}
+}
 
 /* ====== BẢN MOBILE CỦA HAI SƠ ĐỒ ======
    SVG viewBox 700 thu về ~320px trên điện thoại, tỉ lệ 0,467 nên chữ 13px
@@ -375,10 +387,15 @@ tr.total td{background:#f2ead9;font-weight:500}
   <p class="lead rv d1">Toàn bộ hành trình khách hàng chạy trên một hệ thống thống nhất: dữ liệu về một chỗ, vận hành tự động, và kho thanh âm tự tạo ra doanh thu.</p>
   <div class="chain rv d2">
     <div class="ch"><i>01</i><b>Website</b><span>Cửa chính. Kể đúng câu chuyện Therapy, song ngữ, chuẩn tìm kiếm.</span></div>
+    <div class="ch-a">↓</div>
     <div class="ch"><i>02</i><b>Booking</b><span>Đặt lịch 4 bước, thanh toán tại chỗ, nhắc trước 24 giờ và 2 giờ.</span></div>
+    <div class="ch-a">↓</div>
     <div class="ch"><i>03</i><b>Hội viên</b><span>Mantra Plus tự vận hành: kích hoạt, quyền lợi tự trừ, nhắc gia hạn.</span></div>
+    <div class="ch-a">↓</div>
     <div class="ch"><i>04</i><b>Đào tạo</b><span>Lộ trình A đến B: lịch lớp, tài liệu, điểm danh, tiến độ học viên.</span></div>
+    <div class="ch-a">↓</div>
     <div class="ch"><i>05</i><b>Sound Library</b><span>Kho thanh âm và ứng dụng nghe. Vừa giữ chân hội viên, vừa bán được.</span></div>
+    <div class="ch-a">↓</div>
     <div class="ch"><i>06</i><b>CRM / Admin</b><span>Hồ sơ khách 360°, lịch tổng, giao dịch, phân quyền, báo cáo.</span></div>
   </div>
   <p class="note rv d3">Mỗi chặng ghi thẳng vào cùng một hồ sơ khách. Không chặng nào là một phần mềm rời đứng một mình, và đó là điểm khác biệt so với việc mua sáu công cụ lẻ rồi ghép tay.</p>
