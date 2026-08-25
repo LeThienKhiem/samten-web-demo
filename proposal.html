@@ -226,6 +226,14 @@ tr.total td{background:#f2ead9;font-weight:500}
 .contact-card{border-radius:15px;padding:12px 16px;font-size:12.5px;background:#2a1836;border:1px solid var(--plum-line)}
 .contact-card .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a99cb8;margin-bottom:2px}
 
+/* bảy vai ở slide cuối · chỉ dùng trên .slide.dark nên màu để thẳng theo tông đêm */
+.roles{display:grid;grid-template-columns:1fr;gap:7px;margin-top:15px}
+@media(min-width:681px){.roles{grid-template-columns:1fr 1fr;gap:8px}}
+.role{display:flex;gap:10px;align-items:baseline;padding:8px 12px;border-radius:11px;
+  background:rgba(255,255,255,.05);border:1px solid var(--plum-line)}
+.role b{flex:0 0 96px;font-weight:500;font-size:12px;color:var(--cream)}
+.role span{font-size:11.5px;color:#a99cb8;line-height:1.45}
+
 /* định vị thương hiệu ở trang bìa */
 .tagline{
   font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(17px,3.4vw,21px);
@@ -777,17 +785,23 @@ tr.total td{background:#f2ead9;font-weight:500}
   <p class="note rv d5">Khối lượng chi tiết từng hạng mục và ngân sách tương ứng: file Excel đính kèm.</p>
 </section>
 
-<!-- 17. NEXT STEPS -->
+<!-- 17. CACH CHUNG TOI LAM -->
 <section class="slide dark">
   <div class="cover-photo"><img alt="" src="https://images.pexels.com/photos/8391649/pexels-photo-8391649.jpeg?auto=compress&cs=tinysrgb&w=1200" onerror="this.style.display='none'"></div>
   <div class="inner">
-    <div class="kicker rv">Phần 18 · Bắt đầu &nbsp;<span class="gdot"></span></div>
-    <h2 class="rv d1" style="color:var(--cream)">Ba việc cho <em>tuần tới</em></h2>
-    <div class="num-list">
-      <div class="num-item rv d2"><div class="n" style="color:var(--brass-soft)">1</div><div class="bd"><b style="color:var(--cream)">Workshop khởi động (nửa ngày).</b><p style="color:#a99cb8">Chốt phạm vi cùng nhau: mục tiêu số một, cơ cấu doanh thu, gói hội viên, cách ghi nhận dữ liệu trị liệu.</p></div></div>
-      <div class="num-item rv d3"><div class="n" style="color:var(--brass-soft)">2</div><div class="bd"><b style="color:var(--cream)">Duyệt sitemap &amp; bộ thiết kế màn hình.</b><p style="color:#a99cb8">Thống nhất "cái gì nằm ở đâu" trên 62 màn hình trước khi viết code.</p></div></div>
-      <div class="num-item rv d4"><div class="n" style="color:var(--brass-soft)">3</div><div class="bd"><b style="color:var(--cream)">Khởi động sản xuất 10 master đầu tiên.</b><p style="color:#a99cb8">Sound + Noise theo công thức 70% tự làm · ngày khai trương là có nội dung thật.</p></div></div>
+    <div class="kicker rv">Phần 18 · Cách chúng tôi làm &nbsp;<span class="gdot"></span></div>
+    <h2 class="rv d1" style="color:var(--cream)">Vận hành bằng <em>AI agent</em></h2>
+    <p class="lead rv d1">Làm theo cách truyền thống, một hệ thống 105 màn hình cần bảy vai: PM/BA, UI/UX, Frontend, Backend, QA, DevOps, Tech Lead. Bảy vai đó không biến mất. Cái thay đổi là ai làm phần việc cơ học, và đó là chỗ thời gian với chi phí giảm xuống.</p>
+    <div class="roles">
+      <div class="role rv d2"><b>PM / BA</b><span>Agent soạn đặc tả và user story · người chốt phạm vi với Samten</span></div>
+      <div class="role rv d2"><b>UI/UX</b><span>Agent dựng màn và biến thể · người quyết định thiết kế</span></div>
+      <div class="role rv d3"><b>Frontend</b><span>Agent sinh giao diện từ đặc tả · người duyệt trải nghiệm thật</span></div>
+      <div class="role rv d3"><b>Backend</b><span>Agent viết CRUD và tích hợp · người thiết kế dữ liệu, phân quyền</span></div>
+      <div class="role rv d4"><b>QA / Tester</b><span>Agent sinh và chạy test hồi quy · người nghiệm thu bằng tay</span></div>
+      <div class="role rv d4"><b>DevOps</b><span>Agent lo CI/CD và môi trường · người chịu trách nhiệm vận hành</span></div>
+      <div class="role rv d5"><b>Tech Lead</b><span>Agent rà chéo và dò lỗi · người quyết định kiến trúc</span></div>
     </div>
+    <p class="note rv d5">Đây không phải lời hứa: <b style="color:#e3c088">bản chạy thật tại samten-web.vercel.app</b> được làm đúng theo cách này, mở trên điện thoại là kiểm chứng được ngay. Và rào chắn cho Samten không nằm ở niềm tin: cuối mỗi tháng có bản chạy được để bấm thử, nghiệm thu xong mới sang giai đoạn kế.</p>
     <div class="footer-contact">
       <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Không gian</div>Samten Space · Lầu G</div>
       <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Hotline</div>0918 939 980</div>
