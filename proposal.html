@@ -226,6 +226,16 @@ tr.total td{background:#f2ead9;font-weight:500}
 .contact-card{border-radius:15px;padding:12px 16px;font-size:12.5px;background:#2a1836;border:1px solid var(--plum-line)}
 .contact-card .k{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#a99cb8;margin-bottom:2px}
 
+/* ba mảng dùng AI ở slide cuối · chỉ dùng trên .slide.dark nên màu để thẳng theo tông đêm */
+.ai3{display:grid;grid-template-columns:1fr;gap:9px;margin-top:15px}
+@media(min-width:681px){.ai3{grid-template-columns:repeat(3,1fr);gap:10px}}
+.ai-b{padding:12px 14px;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid var(--plum-line)}
+.ai-b .h{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--brass-soft);font-weight:500;margin-bottom:7px}
+.ai-b p{font-size:12px;color:#a99cb8;line-height:1.5}
+.ai-b p + p{margin-top:6px}
+
 /* định vị thương hiệu ở trang bìa */
 .tagline{
   font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(17px,3.4vw,21px);
@@ -783,12 +793,25 @@ tr.total td{background:#f2ead9;font-weight:500}
   <div class="inner">
     <div class="kicker rv">Phần 18 · Cách chúng tôi làm &nbsp;<span class="gdot"></span></div>
     <h2 class="rv d1" style="color:var(--cream)">Vận hành bằng <em>AI agent</em></h2>
-    <p class="lead rv d1">Đặc tả duyệt xong là agent dựng thẳng ra sản phẩm chạy được, người giữ phần quyết định và nghiệm thu. Cách làm này rút ngắn thời gian và giảm chi phí so với quy trình truyền thống.</p>
-    <div class="num-list">
-      <div class="num-item rv d2"><div class="n" style="color:var(--brass-soft)">·</div><div class="bd"><b style="color:var(--cream)">Từ đặc tả ra bản chạy được</b><p style="color:#a99cb8">Giao diện, dữ liệu và kiểm thử sinh thẳng từ đặc tả đã duyệt, không qua nhiều khâu chuyền tay.</p></div></div>
-      <div class="num-item rv d3"><div class="n" style="color:var(--brass-soft)">·</div><div class="bd"><b style="color:var(--cream)">Vòng lặp tính bằng ngày</b><p style="color:#a99cb8">Sửa một màn là xem lại được trong ngày, không phải chờ hết một chu kỳ phát triển.</p></div></div>
-      <div class="num-item rv d4"><div class="n" style="color:var(--brass-soft)">·</div><div class="bd"><b style="color:var(--cream)">Chi phí bám theo khối lượng thật</b><p style="color:#a99cb8">Trả cho phần việc làm ra, không trả cho thời gian chờ giữa các khâu.</p></div></div>
+    <p class="lead rv d1">AI không chỉ dùng để dựng hệ thống. Nó chạy xuyên suốt ba việc: làm ra sản phẩm, sản xuất nội dung, và vận hành hằng ngày. Người giữ phần quyết định và nghiệm thu.</p>
+    <div class="ai3">
+      <div class="ai-b rv d2">
+        <div class="h">Sản phẩm</div>
+        <p>Đặc tả duyệt xong là agent dựng thẳng ra bản chạy được: giao diện, dữ liệu, kiểm thử.</p>
+        <p>Vòng lặp tính bằng ngày, sửa một màn là xem lại được ngay.</p>
+      </div>
+      <div class="ai-b rv d3">
+        <div class="h">Sản xuất nội dung</div>
+        <p>Công cụ AI dựng phần lớn kho thanh âm và toàn bộ hình ảnh, đúng công thức 70/20/10 ở phần trước.</p>
+        <p>Một bản thu ra bảy tài sản: video dài, bản nghe thử, short, artwork, playlist.</p>
+      </div>
+      <div class="ai-b rv d4">
+        <div class="h">Vận hành &amp; hỗ trợ</div>
+        <p>Trợ lý trả lời câu hỏi thường gặp, hướng dẫn đặt lịch, nhắc trước buổi hẹn.</p>
+        <p>Gợi ý bài nghe theo thói quen từng người, tóm tắt số liệu cho dashboard buổi sáng.</p>
+      </div>
     </div>
+    <p class="lead rv d4" style="margin-top:14px">Ba mảng dùng chung một nền công nghệ, nên thời gian ngắn lại và chi phí bám theo khối lượng thật thay vì theo quy trình truyền thống.</p>
     <p class="note rv d5">Đây không phải lời hứa: <b style="color:#e3c088">bản chạy thật tại samten-web.vercel.app</b> được làm đúng theo cách này, mở trên điện thoại là kiểm chứng được ngay. Cuối mỗi tháng đều có bản chạy được để Samten bấm thử.</p>
     <div class="footer-contact">
       <div class="contact-card rv d4" style="color:var(--cream)"><div class="k">Không gian</div>Samten Space · Lầu G</div>
